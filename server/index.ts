@@ -331,6 +331,55 @@ app.get('/api/stats', authenticateToken, requireAdmin, (_req, res) => {
   });
 });
 
+import { BackendAIAgent, AGENT_TOOLS } from './agent/agentEngine.js';
+
+// In-memory execution history log
+const agentExecutionHistory: any[] = [];
+
+// -------------------------------------------------------------
+// 6. BACKEND AI AGENT PLATFORM ROUTES
+// -------------------------------------------------------------
+
+// List Available Agent Tools
+app.get('/api/agent/tools', authenticateToken, requireAdmin, (_req, res) => {
+  return res.json({ tools: AGENT_TOOLS });
+});
+
+// Execute Autonomous AI Agent Task
+app.post('/api/agent/execute', authenticateToken, requireAdmin, async (req: AuthRequest, res) => {
+  try {
+    const { prompt, provider, model, apiKey } = req.body;
+
+    if (!prompt) {
+      return res.status(400).json({ error: 'Prompt instruction is required' });
+    }
+
+    const agent = new BackendAIAgent(provider || 'gemini', model || 'gemini-2.5-flash', apiKey);
+    const result = await agent.executeTask(prompt);
+
+    const logEntry = {
+      id: `task_${Date.now()}`,
+      userId: req.user?.id,
+      userName: req.user?.name,
+      prompt,
+      executedActions: result.executedActions,
+      timestamp: new Date().toISOString()
+    };
+    agentExecutionHistory.unshift(logEntry);
+
+    return res.json(result);
+  } catch (err: any) {
+    console.error('Agent execution error:', err);
+    return res.status(500).json({ error: err.message || 'Agent failed to execute task' });
+  }
+});
+
+// Get Agent Audit History
+app.get('/api/agent/history', authenticateToken, requireAdmin, (_req, res) => {
+  return res.json({ history: agentExecutionHistory.slice(0, 50) });
+});
+
 app.listen(PORT, () => {
   console.log(`⚡ KingLift Control Backend API running on port ${PORT}`);
 });
+

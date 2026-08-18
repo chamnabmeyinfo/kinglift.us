@@ -65,9 +65,12 @@ interface UserAccount {
   createdAt: string;
 }
 
+import { AIAgentConsole } from './AIAgentConsole';
+import { Bot } from 'lucide-react';
+
 export const AdminDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const { token, user, logout } = useAuth();
-  const [activeTab, setActiveTab] = useState<'catalog' | 'rfqs' | 'messages' | 'settings' | 'users'>('catalog');
+  const [activeTab, setActiveTab] = useState<'agent' | 'catalog' | 'rfqs' | 'messages' | 'settings' | 'users'>('agent');
   
   // Data states
   const [stats, setStats] = useState<AdminStats | null>(null);
@@ -359,8 +362,9 @@ export const AdminDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) =
       <div className="flex-1 flex overflow-hidden">
         
         {/* Left Sidebar Navigation */}
-        <aside className="w-56 bg-slate-900 border-r border-slate-800 p-4 space-y-2 flex-shrink-0">
+        <aside className="w-60 bg-slate-900 border-r border-slate-800 p-4 space-y-2 flex-shrink-0">
           {[
+            { id: 'agent', label: 'AI Operations Agent', icon: Bot, isSpecial: true },
             { id: 'catalog', label: 'Machinery Catalog', icon: Package, badge: products.length },
             { id: 'rfqs', label: 'RFQ Pipeline', icon: FileText, badge: rfqs.filter(r => r.status === 'new').length },
             { id: 'messages', label: 'Inquiries & Support', icon: MessageSquare, badge: messages.filter(m => m.status === 'unread').length },
@@ -375,12 +379,14 @@ export const AdminDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) =
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-semibold transition-all ${
                   isSelected
-                    ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
+                    ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20 font-bold'
+                    : (tab as any).isSpecial
+                    ? 'bg-amber-500/10 text-amber-300 border border-amber-500/30 hover:bg-amber-500/20'
                     : 'text-slate-300 hover:bg-slate-800 hover:text-white'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
-                  <Icon className="w-4 h-4" />
+                  <Icon className={`w-4 h-4 ${(tab as any).isSpecial && !isSelected ? 'text-amber-400 animate-pulse' : ''}`} />
                   <span>{tab.label}</span>
                 </div>
                 {tab.badge !== undefined && tab.badge > 0 && (
@@ -398,6 +404,13 @@ export const AdminDashboard: React.FC<{ onClose: () => void }> = ({ onClose }) =
         {/* Right Content Area */}
         <main className="flex-1 p-6 overflow-y-auto bg-slate-950">
           
+          {/* TAB 0: AUTONOMOUS AI AGENT COPILOT */}
+          {activeTab === 'agent' && (
+            <div className="h-[750px] max-h-[85vh]">
+              <AIAgentConsole onDataChanged={fetchDashboardData} />
+            </div>
+          )}
+
           {/* TAB 1: MACHINERY CATALOG CMS */}
           {activeTab === 'catalog' && (
             <div className="space-y-6">

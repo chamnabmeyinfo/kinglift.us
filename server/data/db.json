@@ -13,6 +13,56 @@
   ],
   "products": [
     {
+      "id": "kl-kl-st50-msy7gjfq",
+      "modelNumber": "KL-ST50",
+      "name": "KingLift Pro 5,000 lbs hydraulic stackers",
+      "category": "hydraulic-stackers",
+      "series": "Apex Industrial Series",
+      "tagline": "KingLift Pro 5,000 lbs hydraulic stackers with 5000 lbs capacity.",
+      "description": "Industrial heavy-duty KingLift Pro 5,000 lbs hydraulic stackers engineered for North American logistics facilities.",
+      "highlightSpecs": {
+        "capacity": "5,000 lbs",
+        "liftHeight": "130 in",
+        "power": "48V Lithium-Ion",
+        "weight": "600 lbs"
+      },
+      "features": [
+        "Heavy-gauge steel chassis",
+        "Rapid opportunity charging",
+        "OSHA compliant"
+      ],
+      "specs": {
+        "ratedCapacityLbs": 5000,
+        "ratedCapacityKg": 2268,
+        "maxLiftHeightInches": 130,
+        "maxLiftHeightMm": 3302,
+        "loweredHeightInches": 3.2,
+        "turningRadiusInches": 55,
+        "powerSource": "48V Lithium-Ion",
+        "operatingWeightLbs": 600,
+        "wheelType": "Heavy Polyurethane",
+        "warrantyMonths": 36
+      },
+      "pricing": {
+        "startingMSRP": 3800,
+        "callForCustomQuote": false,
+        "leadTimeDays": 3
+      },
+      "images": {
+        "hero": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
+        "gallery": [
+          "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80"
+        ]
+      },
+      "inStock": true,
+      "featured": false,
+      "certifications": [
+        "OSHA 1910.178 Compliant",
+        "ANSI/ITSDF B56.1",
+        "CE Certified"
+      ]
+    },
+    {
       "id": "kl-ep-4500",
       "modelNumber": "KL-EP45Li",
       "name": "KingLift Pro-Lithium 4,500 lbs Electric Pallet Jack",

@@ -183,17 +183,18 @@
   },
   "active": "4ad8bba57d7e4614",
   "lastOpenFiles": [
+    "dist/assets/index-BXH8yrj-.css",
+    "dist/assets/web-BK-JVUsV.js",
+    "dist/assets/index-DQj1RAww.js",
+    "src/components/admin/AIAgentConsole.tsx",
+    "server/agent/agentEngine.ts",
+    "server/agent",
     "vault/03 - Tech Stack & Architecture/Backend-And-Auth-System.md",
     "server/data/db.json",
     "server/data",
     "dist/assets/index-Dsqni3_R.css",
     "dist/assets/web-Dnzr0IIH.js",
     "dist/assets/index-Mf-EozEc.js",
-    "src/components/admin/AdminDashboard.tsx",
-    "src/components/admin",
-    "src/components/auth/AuthModal.tsx",
-    "src/components/auth",
-    "src/context/AuthContext.tsx",
     "node_modules/@esbuild/win32-x64/README.md",
     "node_modules/tsx/README.md",
     "node_modules/shell-quote/security.md",
@@ -218,7 +219,6 @@
     "node_modules/concurrently/docs/cli/input-handling.md",
     "node_modules/concurrently/docs/cli/configuration.md",
     "node_modules/concurrently/docs/shell-resolution.md",
-    "node_modules/concurrently/docs/README.md",
     "node_modules/concurrently/docs/demo.gif"
   ]
 }
