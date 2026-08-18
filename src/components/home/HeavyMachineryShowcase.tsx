@@ -214,7 +214,7 @@ export const HeavyMachineryShowcase: React.FC<HeavyShowcaseProps> = ({ onSelectP
               </div>
 
               {/* Price & Action */}
-              <div className="flex items-center justify-between pt-2 border-t border-slate-800/80">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2 border-t border-slate-800/80">
                 <div>
                   <div className="text-[10px] text-slate-400 uppercase font-semibold">Direct Factory MSRP</div>
                   <div className="text-2xl font-black text-amber-400 font-mono">{current.price}</div>
@@ -222,10 +222,10 @@ export const HeavyMachineryShowcase: React.FC<HeavyShowcaseProps> = ({ onSelectP
 
                 <button
                   onClick={() => onSelectProduct(current.model)}
-                  className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 active:scale-95 transition-all cursor-pointer"
+                  className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 active:scale-95 transition-all cursor-pointer whitespace-nowrap"
                 >
                   <span>Inspect Engineering Blueprint</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 flex-shrink-0" />
                 </button>
               </div>
 

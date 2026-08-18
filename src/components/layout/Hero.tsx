@@ -57,28 +57,28 @@ export const Hero: React.FC<HeroProps> = ({ onExploreCatalog, onOpenCalculator, 
             </div>
 
             {/* Primary Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3.5 pt-2">
+            <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
                 onClick={onExploreCatalog}
-                className="flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider shadow-xl shadow-amber-500/25 active:scale-95 transition-all cursor-pointer"
+                className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider shadow-xl shadow-amber-500/25 active:scale-95 transition-all cursor-pointer whitespace-nowrap"
               >
-                <span>Browse Machinery Lineup</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>Browse Lineup</span>
+                <ArrowRight className="w-4 h-4 flex-shrink-0" />
               </button>
 
               <button
                 onClick={onOpenCalculator}
-                className="flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900/90 dark:bg-slate-900/90 light:bg-white hover:bg-slate-800 border border-slate-700 dark:border-slate-700 light:border-slate-300 text-white dark:text-white light:text-slate-900 text-xs sm:text-sm font-bold shadow-lg transition-all active:scale-95 cursor-pointer"
+                className="flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900/90 dark:bg-slate-900/90 light:bg-white hover:bg-slate-800 border border-slate-700 dark:border-slate-700 light:border-slate-300 text-white dark:text-white light:text-slate-900 text-xs sm:text-sm font-bold shadow-lg transition-all active:scale-95 cursor-pointer whitespace-nowrap"
               >
-                <Calculator className="w-4 h-4 text-amber-400" />
+                <Calculator className="w-4 h-4 text-amber-400 flex-shrink-0" />
                 <span>Lift Capacity Matcher</span>
               </button>
 
               <button
                 onClick={onOpenAIAdvisor}
-                className="flex items-center gap-1.5 px-4 py-3.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs sm:text-sm font-bold shadow-md transition-all active:scale-95 cursor-pointer"
+                className="flex items-center gap-1.5 px-4 py-3.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs sm:text-sm font-bold shadow-md transition-all active:scale-95 cursor-pointer whitespace-nowrap"
               >
-                <Bot className="w-4 h-4 text-amber-400 animate-pulse" />
+                <Bot className="w-4 h-4 text-amber-400 animate-pulse flex-shrink-0" />
                 <span>AI Spec Advisor</span>
               </button>
             </div>

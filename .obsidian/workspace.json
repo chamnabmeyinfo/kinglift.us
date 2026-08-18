@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "e38f797eec7aee4b",
+        "id": "73fe119d0cca6b2e",
         "type": "tabs",
         "children": [
           {
-            "id": "9fb81e0fcabef7d8",
+            "id": "3bdcf9ac64953df5",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -181,8 +181,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "9fb81e0fcabef7d8",
+  "active": "3bdcf9ac64953df5",
   "lastOpenFiles": [
+    "dist/assets/index-A4eLeXo4.css",
+    "dist/assets/web-BbOOzau1.js",
+    "dist/assets/index-DHzYBtWk.js",
     "dist/assets/index-DcNnip11.css",
     "dist/assets/web-B92Ieowy.js",
     "dist/assets/index-BFMDkYGR.js",
@@ -191,9 +194,6 @@
     "dist/assets/index-I1ZFcf8r.js",
     "dist/assets/index-B9TgYCvY.css",
     "dist/assets/web-BMwAFk92.js",
-    "dist/assets/index-BoRiCtZJ.js",
-    "src/components/tools/ComparisonModal.tsx",
-    "src/components/layout/FloatingCommandBar.tsx",
     "vault/01 - Brand & Identity/UX-UI-ProMax-Skill.md",
     "SKILL-UX-UI-PROMAX.md",
     "SKILL-UI-UX.md",

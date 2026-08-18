@@ -162,18 +162,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onViewDetails
         </div>
 
         {/* Action Buttons */}
-        <div className="grid grid-cols-2 gap-2.5 pt-1">
+        <div className="grid grid-cols-2 gap-2 pt-1">
           <button
             onClick={() => onViewDetails(product)}
-            className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white text-xs font-bold transition-all border border-slate-700/80 hover:border-slate-600 cursor-pointer shadow-sm"
+            className="flex items-center justify-center gap-1 py-2.5 px-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white text-[11px] font-bold transition-all border border-slate-700/80 hover:border-slate-600 cursor-pointer shadow-sm whitespace-nowrap"
           >
-            <span>Full Spec Sheet</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
+            <span>Full Specs</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
           </button>
 
           <button
             onClick={() => addToCart(product, 1)}
-            className={`flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl text-xs font-black uppercase tracking-wide transition-all cursor-pointer ${
+            className={`flex items-center justify-center gap-1 py-2.5 px-2 rounded-xl text-[11px] font-black uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap ${
               isInCart
                 ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/30'
                 : 'bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 shadow-lg shadow-amber-500/20 active:scale-95'
@@ -181,12 +181,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onViewDetails
           >
             {isInCart ? (
               <>
-                <Check className="w-4 h-4 text-amber-400" />
+                <Check className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
                 <span>In RFQ Cart</span>
               </>
             ) : (
               <>
-                <Plus className="w-4 h-4" />
+                <Plus className="w-3.5 h-3.5 flex-shrink-0" />
                 <span>Add to RFQ</span>
               </>
             )}

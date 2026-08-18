@@ -169,10 +169,10 @@ export const TCOCalculator: React.FC = () => {
               {/* CTA Action */}
               <a
                 href="#catalog"
-                className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 active:scale-95 transition-all cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 active:scale-95 transition-all cursor-pointer whitespace-nowrap"
               >
-                <span>Browse Compatible 48V Lithium Equipment</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>Browse 48V Lithium Models</span>
+                <ArrowRight className="w-4 h-4 flex-shrink-0" />
               </a>
 
             </div>

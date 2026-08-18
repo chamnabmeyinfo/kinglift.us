@@ -380,17 +380,17 @@ export const QuoteDrawer: React.FC = () => {
               {step === 'review' ? (
                 <button
                   onClick={() => setStep('contact')}
-                  className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-wide shadow-xl shadow-amber-500/20 transition-all active:scale-95 cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider shadow-xl shadow-amber-500/20 transition-all active:scale-95 cursor-pointer whitespace-nowrap"
                 >
-                  <span>Proceed to Freight & Destination Form</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span>Proceed to Freight & Destination</span>
+                  <ArrowRight className="w-4 h-4 flex-shrink-0" />
                 </button>
               ) : (
                 <div className="flex gap-2">
                   <button
                     type="button"
                     onClick={() => setStep('review')}
-                    className="px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 text-xs font-bold hover:bg-slate-800 cursor-pointer"
+                    className="px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 text-xs font-bold hover:bg-slate-800 cursor-pointer whitespace-nowrap"
                   >
                     Back
                   </button>
@@ -398,10 +398,10 @@ export const QuoteDrawer: React.FC = () => {
                     type="submit"
                     form="rfq-form"
                     disabled={isSubmitting}
-                    className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs uppercase tracking-wide shadow-xl shadow-amber-500/20 transition-all active:scale-95 disabled:opacity-50 cursor-pointer"
+                    className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs uppercase tracking-wide shadow-xl shadow-amber-500/20 transition-all active:scale-95 disabled:opacity-50 cursor-pointer whitespace-nowrap"
                   >
-                    <span>{isSubmitting ? 'Transmitting RFQ...' : 'Submit Official RFQ Request'}</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <span>{isSubmitting ? 'Transmitting...' : 'Submit Official RFQ'}</span>
+                    <ArrowRight className="w-4 h-4 flex-shrink-0" />
                   </button>
                 </div>
               )}

@@ -161,14 +161,14 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Desktop Navigation Links & Mega Menu */}
-          <nav className="hidden xl:flex items-center gap-6 text-xs font-bold uppercase tracking-wider text-slate-300">
+          <nav className="hidden xl:flex items-center gap-5 text-xs font-bold uppercase tracking-wider text-slate-300">
             
             {/* Machinery Mega Menu Trigger */}
             <div className="relative" onMouseLeave={() => setMegaMenuOpen(false)}>
               <button 
                 onMouseEnter={() => setMegaMenuOpen(true)}
                 onClick={() => scrollToSection('catalog')}
-                className="flex items-center gap-1 hover:text-amber-400 transition-colors py-2 cursor-pointer"
+                className="flex items-center gap-1 hover:text-amber-400 transition-colors py-2 cursor-pointer whitespace-nowrap"
               >
                 <span>Machinery Lineup</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${megaMenuOpen ? 'rotate-180 text-amber-400' : ''}`} />
@@ -187,14 +187,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                       className="w-full p-2.5 rounded-xl hover:bg-slate-900 flex items-center justify-between text-left transition-colors group cursor-pointer"
                     >
                       <div className="space-y-0.5">
-                        <div className="text-xs font-bold text-white group-hover:text-amber-400 transition-colors">
+                        <div className="text-xs font-bold text-white group-hover:text-amber-400 transition-colors whitespace-nowrap">
                           {cat.name}
                         </div>
                         <div className="text-[10px] text-slate-400 font-normal line-clamp-1">
                           {cat.description}
                         </div>
                       </div>
-                      <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400 group-hover:translate-x-1 transition-all" />
+                      <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-amber-400 group-hover:translate-x-1 transition-all flex-shrink-0 ml-2" />
                     </button>
                   ))}
                 </div>
@@ -204,7 +204,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Lift Sizing Calculator */}
             <button 
               onClick={onOpenCalculator} 
-              className="flex items-center gap-1.5 hover:text-amber-400 transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 hover:text-amber-400 transition-colors cursor-pointer whitespace-nowrap"
             >
               <Calculator className="w-4 h-4 text-amber-400" />
               <span>Lift Sizer</span>
@@ -213,7 +213,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* AI Advisor Badge */}
             <button 
               onClick={onOpenAIAdvisor} 
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 hover:bg-amber-500/20 transition-all shadow-sm cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 hover:bg-amber-500/20 transition-all shadow-sm cursor-pointer whitespace-nowrap"
             >
               <Bot className="w-4 h-4 text-amber-400 animate-pulse" />
               <span>AI Spec Advisor</span>
@@ -222,7 +222,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Engineering Trust */}
             <button 
               onClick={() => scrollToSection('about')} 
-              className="hover:text-amber-400 transition-colors cursor-pointer"
+              className="hover:text-amber-400 transition-colors cursor-pointer whitespace-nowrap"
             >
               Engineering
             </button>
@@ -230,14 +230,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Contact & Parts */}
             <button 
               onClick={() => scrollToSection('contact')} 
-              className="hover:text-amber-400 transition-colors cursor-pointer"
+              className="hover:text-amber-400 transition-colors cursor-pointer whitespace-nowrap"
             >
               Support
             </button>
           </nav>
 
           {/* Right Action Utilities (Theme, Auth, RFQ Cart, Mobile Menu) */}
-          <div className="flex items-center gap-2.5 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
             
             {/* Theme Mode Switcher (Dark, Light, System) */}
             <ThemeSwitcher />
@@ -246,7 +246,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {isAdmin && (
               <button
                 onClick={onOpenAdmin}
-                className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-bold transition-all shadow-md cursor-pointer"
+                className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-xs font-bold transition-all shadow-md cursor-pointer whitespace-nowrap flex-shrink-0"
               >
                 <ShieldAlert className="w-4 h-4 text-amber-400" />
                 <span>Control Center</span>
@@ -255,15 +255,15 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* User Auth Profile Pill / Sign In */}
             {isAuthenticated ? (
-              <div className="flex items-center gap-2 bg-slate-900/90 border border-slate-700/80 rounded-xl p-1 pl-3 shadow-sm">
+              <div className="flex items-center gap-2 bg-slate-900/90 border border-slate-700/80 rounded-xl p-1 pl-3 shadow-sm flex-shrink-0">
                 <div className="hidden sm:flex flex-col text-right">
-                  <span className="text-xs font-bold text-white truncate max-w-[110px]">{user?.name}</span>
-                  <span className="text-[9px] text-amber-400 font-mono uppercase font-bold">{user?.role}</span>
+                  <span className="text-xs font-bold text-white truncate max-w-[110px] whitespace-nowrap">{user?.name}</span>
+                  <span className="text-[9px] text-amber-400 font-mono uppercase font-bold whitespace-nowrap">{user?.role}</span>
                 </div>
                 <button
                   onClick={logout}
                   title="Sign Out"
-                  className="p-1.5 rounded-lg bg-slate-950 text-slate-400 hover:text-rose-400 transition-colors cursor-pointer"
+                  className="p-1.5 rounded-lg bg-slate-950 text-slate-400 hover:text-rose-400 transition-colors cursor-pointer flex-shrink-0"
                 >
                   <LogOut className="w-3.5 h-3.5" />
                 </button>
@@ -271,7 +271,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             ) : (
               <button
                 onClick={() => openAuthModal('login')}
-                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-amber-400 text-slate-200 hover:text-white text-xs font-bold transition-all cursor-pointer shadow-sm"
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-amber-400 text-slate-200 hover:text-white text-xs font-bold transition-all cursor-pointer shadow-sm whitespace-nowrap flex-shrink-0"
               >
                 <User className="w-3.5 h-3.5 text-amber-400" />
                 <span className="hidden sm:inline">Sign In</span>
@@ -281,12 +281,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Primary RFQ Quote Cart CTA Button */}
             <button
               onClick={openCart}
-              className="relative flex items-center gap-2.5 px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wide shadow-xl shadow-amber-500/25 active:scale-95 transition-all cursor-pointer"
+              className="relative flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wide shadow-xl shadow-amber-500/25 active:scale-95 transition-all cursor-pointer whitespace-nowrap flex-shrink-0"
               aria-label="View RFQ Quote List"
             >
-              <ShoppingCart className="w-4 h-4" />
-              <span className="hidden sm:inline">RFQ Cart</span>
-              <span className="flex items-center justify-center min-w-[22px] h-5 px-1.5 rounded-full bg-slate-950 text-amber-400 text-xs font-mono font-black border border-amber-400">
+              <ShoppingCart className="w-4 h-4 flex-shrink-0" />
+              <span className="hidden sm:inline whitespace-nowrap">RFQ Cart</span>
+              <span className="flex items-center justify-center min-w-[20px] h-5 px-1 rounded-full bg-slate-950 text-amber-400 text-xs font-mono font-black border border-amber-400 flex-shrink-0">
                 {totalItemCount}
               </span>
             </button>

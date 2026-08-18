@@ -177,7 +177,7 @@ export const ComparisonModal: React.FC<ComparisonProps> = ({
                         onClose();
                         onSelectProduct(prod);
                       }}
-                      className="py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold border border-slate-700"
+                      className="py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold border border-slate-700 whitespace-nowrap cursor-pointer"
                     >
                       Deep Specs
                     </button>
@@ -187,7 +187,7 @@ export const ComparisonModal: React.FC<ComparisonProps> = ({
                         addToCart(prod, 1);
                         onClose();
                       }}
-                      className="py-2.5 px-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider shadow-md"
+                      className="py-2.5 px-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider shadow-md whitespace-nowrap cursor-pointer"
                     >
                       Add to RFQ
                     </button>

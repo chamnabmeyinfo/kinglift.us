@@ -177,18 +177,18 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
 
                   <button
                     onClick={handleAddToCart}
-                    className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs uppercase tracking-wide shadow-xl shadow-amber-500/20 active:scale-95 transition-all cursor-pointer"
+                    className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs uppercase tracking-wide shadow-xl shadow-amber-500/20 active:scale-95 transition-all cursor-pointer whitespace-nowrap"
                   >
-                    <ShoppingCart className="w-4 h-4" />
-                    <span>Add to RFQ Quote Cart</span>
+                    <ShoppingCart className="w-4 h-4 flex-shrink-0" />
+                    <span>Add to RFQ Cart</span>
                   </button>
                 </div>
 
                 <button
                   onClick={handleDownloadCutsheet}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-slate-950 hover:bg-slate-800 text-slate-300 text-xs font-bold border border-slate-700 transition-colors cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-slate-950 hover:bg-slate-800 text-slate-300 text-xs font-bold border border-slate-700 transition-colors cursor-pointer whitespace-nowrap"
                 >
-                  <Download className="w-4 h-4 text-amber-400" />
+                  <Download className="w-4 h-4 text-amber-400 flex-shrink-0" />
                   <span>
                     {pdfDownloaded ? '✓ Engineering PDF Cutsheet Exported!' : 'Download Technical Spec Cutsheet (PDF)'}
                   </span>
@@ -240,10 +240,10 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
           )}
 
           {/* Tab Navigation */}
-          <div className="border-b border-slate-800 flex items-center gap-6 pt-2">
+          <div className="border-b border-slate-800 flex items-center gap-4 sm:gap-6 pt-2 overflow-x-auto pb-0.5">
             <button
               onClick={() => setActiveTab('overview')}
-              className={`pb-3 text-xs font-bold uppercase tracking-wider transition-colors border-b-2 ${
+              className={`pb-3 text-xs font-bold uppercase tracking-wider transition-colors border-b-2 whitespace-nowrap cursor-pointer ${
                 activeTab === 'overview'
                   ? 'border-amber-400 text-amber-400'
                   : 'border-transparent text-slate-400 hover:text-slate-200'
@@ -254,7 +254,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
 
             <button
               onClick={() => setActiveTab('specs')}
-              className={`pb-3 text-xs font-bold uppercase tracking-wider transition-colors border-b-2 ${
+              className={`pb-3 text-xs font-bold uppercase tracking-wider transition-colors border-b-2 whitespace-nowrap cursor-pointer ${
                 activeTab === 'specs'
                   ? 'border-amber-400 text-amber-400'
                   : 'border-transparent text-slate-400 hover:text-slate-200'
@@ -265,7 +265,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
 
             <button
               onClick={() => setActiveTab('compliance')}
-              className={`pb-3 text-xs font-bold uppercase tracking-wider transition-colors border-b-2 ${
+              className={`pb-3 text-xs font-bold uppercase tracking-wider transition-colors border-b-2 whitespace-nowrap cursor-pointer ${
                 activeTab === 'compliance'
                   ? 'border-amber-400 text-amber-400'
                   : 'border-transparent text-slate-400 hover:text-slate-200'
