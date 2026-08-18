@@ -12,7 +12,8 @@ import {
   Minus, 
   Award,
   Zap,
-  Info
+  Info,
+  CheckCircle2
 } from 'lucide-react';
 
 interface ProductModalProps {
@@ -50,27 +51,34 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
     }, 3000);
   };
 
+  const accessoriesTotal = selectedAccessories.reduce((sum, accName) => {
+    const found = product.accessories?.find(a => a.name === accName);
+    return sum + (found ? found.price * quantity : 0);
+  }, 0);
+
+  const totalCalculated = (product.pricing.startingMSRP * quantity) + accessoriesTotal;
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-slate-950/80 backdrop-blur-md">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-slate-950/85 backdrop-blur-xl">
       <div 
-        className="relative w-full max-w-4xl bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col"
+        className="relative w-full max-w-4xl bg-slate-900 border border-slate-700/80 rounded-3xl shadow-2xl overflow-hidden my-auto max-h-[92vh] flex flex-col gold-border-pulse"
         onClick={(e) => e.stopPropagation()}
       >
         
         {/* Modal Top Bar */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950 flex-shrink-0">
           <div className="flex items-center gap-3">
-            <span className="px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-mono font-bold">
+            <span className="px-3 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-mono font-black tracking-wider">
               {product.modelNumber}
             </span>
-            <span className="text-xs text-slate-400 font-medium hidden sm:inline-block">
+            <span className="text-xs text-slate-300 font-bold uppercase hidden sm:inline-block font-mono">
               {product.series}
             </span>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -78,18 +86,18 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
         </div>
 
         {/* Modal Scrollable Body */}
-        <div className="p-6 overflow-y-auto space-y-6 flex-1">
+        <div className="p-6 overflow-y-auto space-y-6 flex-1 text-xs">
           
           {/* Top Section: Gallery & Quick Purchase Meta */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             
             {/* Gallery Column */}
             <div className="md:col-span-6 space-y-3">
-              <div className="relative h-64 sm:h-72 w-full rounded-xl overflow-hidden bg-slate-950 border border-slate-800">
+              <div className="relative h-64 sm:h-76 w-full rounded-2xl overflow-hidden bg-slate-950 border border-slate-800">
                 <img
                   src={product.images.gallery[selectedImageIndex] || product.images.hero}
                   alt={product.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
                 />
               </div>
 
@@ -100,9 +108,9 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
                     <button
                       key={idx}
                       onClick={() => setSelectedImageIndex(idx)}
-                      className={`h-16 w-20 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 ${
+                      className={`h-16 w-20 rounded-xl overflow-hidden border-2 transition-all flex-shrink-0 cursor-pointer ${
                         selectedImageIndex === idx
-                          ? 'border-amber-400 scale-95'
+                          ? 'border-amber-400 scale-95 shadow-md shadow-amber-500/20'
                           : 'border-slate-800 opacity-60 hover:opacity-100'
                       }`}
                     >
@@ -117,7 +125,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
             <div className="md:col-span-6 flex flex-col justify-between space-y-4">
               
               <div className="space-y-2">
-                <h2 className="text-xl sm:text-2xl font-black text-white font-display">
+                <h2 className="text-xl sm:text-2xl font-black text-white font-display uppercase tracking-tight">
                   {product.name}
                 </h2>
                 <p className="text-xs text-slate-300 leading-relaxed">
@@ -126,36 +134,42 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
               </div>
 
               {/* Price & Lead Time */}
-              <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1">
+              <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
                 <div className="flex items-baseline justify-between">
-                  <span className="text-xs text-slate-400 uppercase font-medium">Starting Factory MSRP</span>
-                  <span className="text-2xl font-black text-amber-400 font-mono">
-                    ${product.pricing.startingMSRP.toLocaleString()}
-                  </span>
+                  <span className="text-[11px] text-slate-400 uppercase font-semibold">Starting Factory MSRP</span>
+                  <div className="text-right">
+                    <span className="text-2xl font-black text-amber-400 font-mono">
+                      ${totalCalculated.toLocaleString()}
+                    </span>
+                    {quantity > 1 && (
+                      <div className="text-[10px] text-slate-500 font-mono">(${product.pricing.startingMSRP.toLocaleString()} / unit)</div>
+                    )}
+                  </div>
                 </div>
+
                 <div className="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-800/80">
-                  <span className="flex items-center gap-1 text-emerald-400">
-                    <Check className="w-3.5 h-3.5" />
-                    In-Stock ({product.pricing.leadTimeDays}-Day Lead Time)
+                  <span className="flex items-center gap-1 text-emerald-400 font-mono font-semibold">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    In-Stock ({product.pricing.leadTimeDays}-Day Dispatch)
                   </span>
-                  <span className="font-mono text-slate-300">US Continental Shipping</span>
+                  <span className="font-mono text-slate-300">US Logistics</span>
                 </div>
               </div>
 
               {/* Quantity Selector & Add to Quote Button */}
-              <div className="space-y-3 pt-2">
+              <div className="space-y-3 pt-1">
                 <div className="flex items-center gap-3">
-                  <div className="flex items-center bg-slate-950 border border-slate-700 rounded-lg p-1">
+                  <div className="flex items-center bg-slate-950 border border-slate-700 rounded-xl p-1">
                     <button
                       onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                      className="p-1.5 rounded text-slate-400 hover:text-white hover:bg-slate-800"
+                      className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
                     >
                       <Minus className="w-3.5 h-3.5" />
                     </button>
-                    <span className="px-4 text-xs font-mono font-bold text-white">{quantity}</span>
+                    <span className="px-4 text-sm font-mono font-bold text-white">{quantity}</span>
                     <button
                       onClick={() => setQuantity(quantity + 1)}
-                      className="p-1.5 rounded text-slate-400 hover:text-white hover:bg-slate-800"
+                      className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
                     >
                       <Plus className="w-3.5 h-3.5" />
                     </button>
@@ -163,20 +177,20 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
 
                   <button
                     onClick={handleAddToCart}
-                    className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-wide shadow-lg shadow-amber-500/20 active:scale-95 transition-all"
+                    className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs uppercase tracking-wide shadow-xl shadow-amber-500/20 active:scale-95 transition-all cursor-pointer"
                   >
                     <ShoppingCart className="w-4 h-4" />
-                    <span>Add Model to RFQ Quote</span>
+                    <span>Add to RFQ Quote Cart</span>
                   </button>
                 </div>
 
                 <button
                   onClick={handleDownloadCutsheet}
-                  className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-slate-950 hover:bg-slate-800 text-slate-300 text-xs font-medium border border-slate-700 transition-colors"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-slate-950 hover:bg-slate-800 text-slate-300 text-xs font-bold border border-slate-700 transition-colors cursor-pointer"
                 >
-                  <Download className="w-3.5 h-3.5 text-amber-400" />
+                  <Download className="w-4 h-4 text-amber-400" />
                   <span>
-                    {pdfDownloaded ? '✓ Spec Sheet PDF Downloaded!' : 'Download Technical PDF Cut Sheet'}
+                    {pdfDownloaded ? '✓ Engineering PDF Cutsheet Exported!' : 'Download Technical Spec Cutsheet (PDF)'}
                   </span>
                 </button>
               </div>
@@ -187,26 +201,26 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
 
           {/* Optional Accessories Selector */}
           {product.accessories && product.accessories.length > 0 && (
-            <div className="p-4 rounded-xl bg-slate-950/70 border border-slate-800 space-y-3">
-              <div className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                <Zap className="w-3.5 h-3.5 text-amber-400" />
-                <span>Optional OEM Upgrades & Accessories</span>
+            <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+              <div className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5 font-display">
+                <Zap className="w-4 h-4 text-amber-400" />
+                <span>Optional Factory Add-Ons & Attachments</span>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {product.accessories.map((acc, idx) => {
                   const isChecked = selectedAccessories.includes(acc.name);
                   return (
                     <div
                       key={idx}
                       onClick={() => toggleAccessory(acc.name)}
-                      className={`p-2.5 rounded-lg border cursor-pointer transition-all flex items-start justify-between gap-2 ${
+                      className={`p-3 rounded-xl border cursor-pointer transition-all flex items-start justify-between gap-3 ${
                         isChecked
-                          ? 'bg-amber-500/10 border-amber-500/40 text-amber-300'
+                          ? 'bg-amber-500/10 border-amber-500/50 text-amber-300 shadow-md'
                           : 'bg-slate-900 border-slate-800 text-slate-300 hover:border-slate-700'
                       }`}
                     >
                       <div className="space-y-0.5">
-                        <div className="text-xs font-semibold">{acc.name}</div>
+                        <div className="text-xs font-bold">{acc.name}</div>
                         <div className="text-[10px] text-slate-400">{acc.description}</div>
                       </div>
                       <div className="text-right flex-shrink-0">
@@ -226,7 +240,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
           )}
 
           {/* Tab Navigation */}
-          <div className="border-b border-slate-800 flex items-center gap-6">
+          <div className="border-b border-slate-800 flex items-center gap-6 pt-2">
             <button
               onClick={() => setActiveTab('overview')}
               className={`pb-3 text-xs font-bold uppercase tracking-wider transition-colors border-b-2 ${
@@ -235,7 +249,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
                   : 'border-transparent text-slate-400 hover:text-slate-200'
               }`}
             >
-              Machine Overview & Features
+              Overview & Features
             </button>
 
             <button
@@ -246,7 +260,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
                   : 'border-transparent text-slate-400 hover:text-slate-200'
               }`}
             >
-              Full Engineering Spec Sheet
+              Full Engineering Table
             </button>
 
             <button
@@ -269,13 +283,13 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
               </p>
               
               <div className="space-y-2">
-                <h4 className="text-xs font-bold text-white uppercase tracking-wider">
-                  Standard Factory Equipment & Engineering
+                <h4 className="text-xs font-bold text-white uppercase tracking-wider font-display">
+                  Standard Factory Engineering & Safety Systems
                 </h4>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-slate-300">
                   {product.features.map((feat, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <Check className="w-3.5 h-3.5 text-amber-400 mt-0.5 flex-shrink-0" />
+                    <li key={idx} className="flex items-start gap-2 p-2 rounded-lg bg-slate-950/60 border border-slate-800/80">
+                      <Check className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
                       <span>{feat}</span>
                     </li>
                   ))}
@@ -288,9 +302,9 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
           {activeTab === 'specs' && (
             <div className="space-y-3">
               <SpecTable specs={product.specs} />
-              <div className="flex items-center gap-2 text-[11px] text-slate-400 bg-slate-950 p-2.5 rounded-lg border border-slate-800">
+              <div className="flex items-center gap-2 text-[11px] text-slate-400 bg-slate-950 p-3 rounded-xl border border-slate-800">
                 <Info className="w-4 h-4 text-amber-400 flex-shrink-0" />
-                <span>All measurements conform to ANSI/ITSDF B56 testing standards. Custom fork dimensions and high-lift masts available upon RFQ submission.</span>
+                <span>All ratings conform to ANSI/ITSDF B56.1 testing standards. Custom fork lengths and mast heights available upon RFQ request.</span>
               </div>
             </div>
           )}
@@ -298,28 +312,28 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
           {/* Tab Content 3: Compliance & Warranty */}
           {activeTab === 'compliance' && (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+              <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
                 <div className="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase">
                   <Award className="w-4 h-4" />
                   <span>Safety Certifications</span>
                 </div>
-                <ul className="space-y-1 text-xs text-slate-300">
+                <ul className="space-y-1.5 text-xs text-slate-300">
                   {product.certifications.map((cert, idx) => (
                     <li key={idx} className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                      <span className="w-2 h-2 rounded-full bg-amber-400"></span>
                       <span>{cert}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+              <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
                 <div className="flex items-center gap-2 text-xs font-bold text-amber-400 uppercase">
                   <ShieldCheck className="w-4 h-4" />
-                  <span>{product.specs.warrantyMonths}-Month OEM Warranty</span>
+                  <span>{product.specs.warrantyMonths}-Month Factory Warranty</span>
                 </div>
                 <p className="text-xs text-slate-400 leading-relaxed">
-                  Includes comprehensive parts replacement, factory technician telephone diagnostics, and express-air shipments for critical control modules and lithium packs.
+                  Includes comprehensive powertrain component replacement, telephone engineering diagnostics, and expedited freight on emergency replacement parts.
                 </p>
               </div>
             </div>

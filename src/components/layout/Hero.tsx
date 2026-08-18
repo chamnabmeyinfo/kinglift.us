@@ -1,5 +1,12 @@
 import React from 'react';
-import { ArrowRight, Zap, Truck, CheckCircle2, FileSpreadsheet } from 'lucide-react';
+import { 
+  ArrowRight, 
+  ShieldCheck, 
+  Truck, 
+  Calculator, 
+  Bot, 
+  Award 
+} from 'lucide-react';
 
 interface HeroProps {
   onExploreCatalog: () => void;
@@ -7,151 +14,185 @@ interface HeroProps {
   onOpenAIAdvisor: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onExploreCatalog, onOpenCalculator }) => {
+export const Hero: React.FC<HeroProps> = ({ onExploreCatalog, onOpenCalculator, onOpenAIAdvisor }) => {
   return (
-    <section className="relative overflow-hidden bg-slate-950 pt-8 pb-16 lg:pt-14 lg:pb-24 border-b border-slate-800">
-      {/* Background Subtle Industrial Accents */}
-      <div className="absolute inset-0 industrial-grid opacity-30 pointer-events-none"></div>
-      <div className="absolute -top-40 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl pointer-events-none"></div>
+    <div className="relative overflow-hidden bg-slate-950 industrial-grid pt-8 pb-16 lg:pt-14 lg:pb-24 border-b border-slate-800">
+      
+      {/* Radial Atmospheric Lighting */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[850px] h-[450px] bg-gradient-to-b from-amber-500/15 via-amber-500/5 to-transparent rounded-full blur-3xl pointer-events-none -z-0"></div>
+      <div className="absolute -top-24 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none -z-0"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-8 z-10">
+        
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Left Column: Core Value & CTA */}
+          {/* Left Column: Core Value Proposition */}
           <div className="lg:col-span-7 space-y-6">
             
-            {/* Direct Brand Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700/80 text-xs font-semibold text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-amber-400"></span>
-              <span className="text-amber-400 font-bold uppercase tracking-wider">KingLift™ US Direct</span>
-              <span className="text-slate-500">•</span>
-              <span>Zero Middleman Markups</span>
+            {/* Top Engineering Pill Badge */}
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/90 dark:bg-slate-900/90 light:bg-amber-50 border border-amber-500/30 text-xs font-semibold shadow-lg">
+              <span className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+              </span>
+              <span className="text-amber-400 font-mono font-bold tracking-wide uppercase text-[11px]">
+                NEXT-GEN 48V LITHIUM MACHINERY
+              </span>
+              <span className="text-slate-600 dark:text-slate-600 light:text-slate-300">|</span>
+              <span className="text-slate-300 dark:text-slate-300 light:text-slate-700 text-[11px] font-medium">Direct US Inventory</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl xl:text-6xl font-black text-white tracking-tight leading-[1.1] uppercase font-display">
-              Heavy Power. <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500">
-                Lithium Electric
-              </span> Precision.
-            </h1>
-
-            {/* Sub-copy */}
-            <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
-              Equip your warehouse, logistics fleet, and job sites with KingLift's proprietary line of heavy-duty electric pallet trucks, scissor lifts, walkie stackers, and hydraulic tail lifts. Factory direct from North American distribution centers.
-            </p>
-
-            {/* Key Value Points */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
-              <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-amber-400 flex-shrink-0" />
-                <span>OSHA & ANSI Certified</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-300">
-                <Zap className="w-4 h-4 text-amber-400 flex-shrink-0" />
-                <span>48V Fast-Charge LiFePO4</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-300">
-                <Truck className="w-4 h-4 text-amber-400 flex-shrink-0" />
-                <span>48-Hour US Dispatch</span>
-              </div>
+            <div className="space-y-2">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase text-white tracking-tight leading-[1.08] font-display">
+                Rugged Power. <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 drop-shadow-sm">
+                  Precision Lifting.
+                </span> <br />
+                Factory Direct.
+              </h1>
+              <p className="text-sm sm:text-base text-slate-300 dark:text-slate-300 light:text-slate-600 max-w-2xl font-normal leading-relaxed pt-2">
+                Heavy-duty commercial material handling machinery engineered for North American logistics facilities, distribution warehouses, and manufacturing plants. Zero dealer markups.
+              </p>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-4">
+            {/* Primary Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3.5 pt-2">
               <button
                 onClick={onExploreCatalog}
-                className="flex items-center gap-2 px-7 py-3.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-sm tracking-wide shadow-xl shadow-amber-500/20 transition-all hover:scale-[1.02] active:scale-95"
+                className="flex items-center gap-2.5 px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider shadow-xl shadow-amber-500/25 active:scale-95 transition-all cursor-pointer"
               >
-                <span>EXPLORE MACHINERY CATALOG</span>
+                <span>Browse Machinery Lineup</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
               <button
                 onClick={onOpenCalculator}
-                className="flex items-center gap-2 px-6 py-3.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-bold text-sm transition-all hover:border-slate-600"
+                className="flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900/90 dark:bg-slate-900/90 light:bg-white hover:bg-slate-800 border border-slate-700 dark:border-slate-700 light:border-slate-300 text-white dark:text-white light:text-slate-900 text-xs sm:text-sm font-bold shadow-lg transition-all active:scale-95 cursor-pointer"
               >
-                <FileSpreadsheet className="w-4 h-4 text-amber-400" />
-                <span>Spec & Lift Calculator</span>
+                <Calculator className="w-4 h-4 text-amber-400" />
+                <span>Lift Capacity Matcher</span>
               </button>
+
+              <button
+                onClick={onOpenAIAdvisor}
+                className="flex items-center gap-1.5 px-4 py-3.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs sm:text-sm font-bold shadow-md transition-all active:scale-95 cursor-pointer"
+              >
+                <Bot className="w-4 h-4 text-amber-400 animate-pulse" />
+                <span>AI Spec Advisor</span>
+              </button>
+            </div>
+
+            {/* Key Trust Signals Bar */}
+            <div className="grid grid-cols-3 gap-3 pt-4 border-t border-slate-800/80">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-400 flex-shrink-0">
+                  <ShieldCheck className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-white uppercase font-mono">3–5 Year</div>
+                  <div className="text-[10px] text-slate-400">Powertrain Warranty</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-400 flex-shrink-0">
+                  <Truck className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-white uppercase font-mono">48-Hr Dispatch</div>
+                  <div className="text-[10px] text-slate-400">Chicago & Dallas Hubs</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-amber-400 flex-shrink-0">
+                  <Award className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-white uppercase font-mono">OSHA & ANSI</div>
+                  <div className="text-[10px] text-slate-400">B56.1 Compliant</div>
+                </div>
+              </div>
             </div>
 
           </div>
 
-          {/* Right Column: Hero Machine Card Showcase */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 p-6 shadow-2xl overflow-hidden group">
+          {/* Right Column: Interactive Machinery Showcase Card */}
+          <div className="lg:col-span-5">
+            <div className="relative titanium-card rounded-3xl p-6 overflow-hidden gold-border-pulse shadow-2xl">
               
-              {/* Highlight ribbon */}
-              <div className="absolute top-4 right-4 bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[11px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-                BESTSELLER MODEL
+              {/* Top Banner Tag */}
+              <div className="flex items-center justify-between gap-2 mb-4">
+                <span className="px-2.5 py-1 rounded-md bg-amber-500/20 border border-amber-500/30 text-amber-400 font-mono font-bold text-[11px] uppercase">
+                  ⭐ FLAGSHIP MODEL
+                </span>
+                <span className="text-[11px] text-emerald-400 font-mono font-semibold flex items-center gap-1">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  In Stock (14 Units Ready)
+                </span>
               </div>
 
-              {/* Machine Hero Visual */}
-              <div className="relative h-64 sm:h-72 w-full rounded-xl overflow-hidden bg-slate-950/80 mb-5 border border-slate-800/80">
+              {/* Machinery Image Preview */}
+              <div className="relative h-60 w-full rounded-2xl overflow-hidden bg-slate-950 border border-slate-800/80 mb-5 group">
                 <img
-                  src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1000&q=80"
-                  alt="KingLift KL-EP45Li Electric Pallet Jack"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80"
+                  alt="KingLift Heavy Pallet Truck"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80"></div>
                 
-                {/* Floating Model Badge */}
-                <div className="absolute bottom-3 left-3 bg-slate-950/90 backdrop-blur-sm border border-slate-700 px-3 py-1 rounded-md text-xs font-mono text-amber-400 font-bold">
-                  MODEL: KL-EP45Li
-                </div>
-              </div>
-
-              {/* Card Meta */}
-              <div className="space-y-3">
-                <div className="flex items-baseline justify-between">
-                  <h3 className="text-xl font-black text-white font-display">
-                    KingLift Pro-Lithium 4,500 lbs
-                  </h3>
+                <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between">
+                  <div>
+                    <div className="font-mono font-black text-amber-400 text-sm">KL-EP45Li</div>
+                    <div className="font-bold text-white text-xs">Titan-Pro 4,500 lbs Electric Pallet Jack</div>
+                  </div>
                   <div className="text-right">
-                    <div className="text-xs text-slate-400">Starting MSRP</div>
-                    <div className="text-lg font-black text-amber-400 font-mono">$2,850</div>
+                    <div className="text-[10px] text-slate-400 uppercase font-semibold">Starting MSRP</div>
+                    <div className="font-mono font-black text-amber-300 text-base">$2,850</div>
                   </div>
-                </div>
-
-                <p className="text-xs text-slate-400 line-clamp-2">
-                  Ultracompact 48V Lithium-Ion walkie pallet jack built for high-throughput logistics and 53ft trailer staging.
-                </p>
-
-                {/* Quick specs grid */}
-                <div className="grid grid-cols-3 gap-2 pt-2 border-t border-slate-800/80 text-center">
-                  <div className="bg-slate-900/60 p-2 rounded-lg border border-slate-800">
-                    <div className="text-[10px] text-slate-400 uppercase font-medium">Capacity</div>
-                    <div className="text-xs font-black text-white font-mono">4,500 lbs</div>
-                  </div>
-                  <div className="bg-slate-900/60 p-2 rounded-lg border border-slate-800">
-                    <div className="text-[10px] text-slate-400 uppercase font-medium">Power</div>
-                    <div className="text-xs font-black text-amber-400 font-mono">48V Li-Ion</div>
-                  </div>
-                  <div className="bg-slate-900/60 p-2 rounded-lg border border-slate-800">
-                    <div className="text-[10px] text-slate-400 uppercase font-medium">Turn Radius</div>
-                    <div className="text-xs font-black text-white font-mono">53.5 in</div>
-                  </div>
-                </div>
-
-                <div className="pt-2">
-                  <button
-                    onClick={onExploreCatalog}
-                    className="w-full py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-300 hover:text-white font-semibold text-xs transition-colors flex items-center justify-center gap-1.5"
-                  >
-                    <span>View Specifications & Direct Quote</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
                 </div>
               </div>
+
+              {/* Dynamic Engineering Spec Bar */}
+              <div className="grid grid-cols-4 gap-2 text-center text-xs mb-4">
+                <div className="p-2 rounded-xl bg-slate-950/80 border border-slate-800/80">
+                  <div className="text-[10px] text-slate-400 uppercase">Capacity</div>
+                  <div className="font-mono font-bold text-white">4,500 lbs</div>
+                </div>
+
+                <div className="p-2 rounded-xl bg-slate-950/80 border border-slate-800/80">
+                  <div className="text-[10px] text-slate-400 uppercase">Lift Height</div>
+                  <div className="font-mono font-bold text-white">8.0 in</div>
+                </div>
+
+                <div className="p-2 rounded-xl bg-slate-950/80 border border-slate-800/80">
+                  <div className="text-[10px] text-slate-400 uppercase">Battery</div>
+                  <div className="font-mono font-bold text-amber-400">48V Li-Ion</div>
+                </div>
+
+                <div className="p-2 rounded-xl bg-slate-950/80 border border-slate-800/80">
+                  <div className="text-[10px] text-slate-400 uppercase">Lead Time</div>
+                  <div className="font-mono font-bold text-emerald-400">3 Days</div>
+                </div>
+              </div>
+
+              {/* Quick Spec Action */}
+              <button
+                onClick={onExploreCatalog}
+                className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-amber-400/50 text-slate-200 hover:text-white font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer"
+              >
+                <span>View Complete Engineering Blueprint</span>
+                <ArrowRight className="w-3.5 h-3.5 text-amber-400" />
+              </button>
 
             </div>
           </div>
 
         </div>
+
       </div>
-    </section>
+
+    </div>
   );
 };

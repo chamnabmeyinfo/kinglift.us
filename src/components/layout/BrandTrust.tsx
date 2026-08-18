@@ -1,78 +1,114 @@
 import React from 'react';
-import { ShieldCheck, Truck, Wrench, FileCheck, Award, Zap } from 'lucide-react';
+import { 
+  ShieldCheck, 
+  DollarSign, 
+  Clock, 
+  BatteryCharging, 
+  CheckCircle2, 
+  MapPin, 
+  ArrowRight
+} from 'lucide-react';
 
 export const BrandTrust: React.FC = () => {
-  const trustPillars = [
+  const pillars = [
     {
       icon: ShieldCheck,
-      title: '3 to 5-Year Factory Warranty',
-      desc: 'Full powertrain, hydraulic pump, and lithium battery cell coverage with US-based warranty claims.'
+      badge: 'SAFETY & COMPLIANCE',
+      title: 'OSHA & ANSI B56.1 Certified',
+      description: 'Factory rated, inspected, and certified to meet all OSHA 1910.178 and ANSI/ITSDF commercial material handling safety standards.'
     },
     {
-      icon: Truck,
-      title: '48-Hour US Hub Dispatch',
-      desc: 'Inventory stocked in 4 strategic North American distribution centers for fast LTL freight delivery.'
+      icon: DollarSign,
+      badge: 'FACTORY DIRECT SAVINGS',
+      title: 'Zero Distributor Markups',
+      description: 'Buy proprietary machinery directly from the brand. Save up to 35% compared to multi-tier dealer networks with transparent MSRP pricing.'
     },
     {
-      icon: FileCheck,
-      title: 'OSHA & ANSI B56 Certified',
-      desc: 'Every machine passes rigorous safety protocols and meets ANSI/ITSDF standards for workplace safety.'
+      icon: Clock,
+      badge: 'NATIONWIDE SERVICE',
+      title: '3–5 Year Powertrain Warranty',
+      description: 'Supported by 4 central US parts depots (Chicago, Dallas, Atlanta, Ontario CA) with 48-hour emergency component overnighting.'
     },
     {
-      icon: Wrench,
-      title: 'Factory-Direct OEM Spare Parts',
-      desc: 'Keep uptime high with overnight replacement wheels, hydraulic seals, and battery modules.'
-    },
-    {
-      icon: Zap,
-      title: 'Smart Lithium LiFePO4 Tech',
-      desc: 'Zero-maintenance lithium cells with rapid 2-hour opportunity charging that outlasts lead-acid 3x.'
-    },
-    {
-      icon: Award,
-      title: 'Dedicated Commercial Accounts',
-      desc: 'Volume fleet pricing, custom mast configurations, and direct net-30 invoicing for enterprise buyers.'
+      icon: BatteryCharging,
+      badge: 'NEXT-GEN TECH',
+      title: '48V Lithium Fast Charging',
+      description: 'Zero maintenance lithium-ion battery technology with 2-hour rapid opportunity charging for continuous multi-shift warehouse uptime.'
     }
   ];
 
   return (
-    <section id="about" className="py-16 bg-slate-900/60 border-b border-slate-800">
+    <section id="about" className="py-16 bg-slate-950 border-b border-slate-800 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <div className="text-xs font-bold text-amber-400 uppercase tracking-widest">
-            The KingLift Standard
+        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[10px] font-mono font-bold uppercase tracking-widest">
+            THE KINGLIFT STANDARD
           </div>
-          <h2 className="text-2xl sm:text-3xl font-black text-white uppercase font-display">
-            Built for Zero Downtime. Backed by Brand Direct Support.
+          <h2 className="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight font-display">
+            Engineered for High-Uptime Commercial Operations
           </h2>
-          <p className="text-sm text-slate-400 leading-relaxed">
-            We engineer our lifting equipment with thicker gauge steel, sealed brushless drive motors, and modular electronics to keep your fleet moving every single shift.
+          <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Every machine is built with heavy-gauge robotic-welded steel chassis, premium European hydraulic pumps, and North American electronics.
           </p>
         </div>
 
-        {/* 6 Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {trustPillars.map((pillar, idx) => {
-            const Icon = pillar.icon;
+        {/* 4 Pillars Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {pillars.map((p, idx) => {
+            const Icon = p.icon;
             return (
-              <div 
+              <div
                 key={idx}
-                className="p-6 rounded-xl bg-slate-950/70 border border-slate-800 hover:border-amber-500/40 transition-all group"
+                className="titanium-card p-6 rounded-3xl space-y-4 border border-slate-800/80 hover:border-amber-500/50 transition-all flex flex-col justify-between group"
               >
-                <div className="w-10 h-10 rounded-lg bg-amber-400/10 border border-amber-400/20 text-amber-400 flex items-center justify-center mb-4 group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors">
-                  <Icon className="w-5 h-5" />
+                <div className="space-y-3">
+                  <div className="w-12 h-12 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-center text-amber-400 group-hover:bg-amber-500 group-hover:text-slate-950 transition-all shadow-md">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <div className="text-[10px] text-amber-400 font-mono font-bold tracking-wider uppercase">
+                    {p.badge}
+                  </div>
+                  <h3 className="text-base font-black text-white font-display uppercase tracking-tight">
+                    {p.title}
+                  </h3>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    {p.description}
+                  </p>
                 </div>
-                <h3 className="text-base font-bold text-white mb-2 group-hover:text-amber-300 transition-colors">
-                  {pillar.title}
-                </h3>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  {pillar.desc}
-                </p>
+
+                <div className="pt-2 flex items-center gap-1 text-[11px] font-bold text-amber-400 group-hover:translate-x-1 transition-transform">
+                  <span>Factory Guaranteed</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </div>
               </div>
             );
           })}
+        </div>
+
+        {/* US Logistics Centers Banner */}
+        <div className="mt-12 p-6 rounded-3xl bg-slate-900/80 border border-slate-800 flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center flex-shrink-0">
+              <MapPin className="w-6 h-6" />
+            </div>
+            <div>
+              <div className="text-sm font-bold text-white font-display uppercase">
+                4 Central North American Warehouses & Parts Hubs
+              </div>
+              <div className="text-xs text-slate-400">
+                Chicago, IL (Central) • Dallas, TX (South) • Atlanta, GA (Southeast) • Ontario, CA (West Coast)
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 font-mono">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+              <span>Direct Commercial Freight</span>
+            </span>
+          </div>
         </div>
 
       </div>

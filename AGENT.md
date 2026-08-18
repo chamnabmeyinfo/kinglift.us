@@ -89,12 +89,14 @@ kinglift.us/
 - **Feedback & Micro-interactions:** `canvas-confetti`, smooth transitions
 
 ### Golden Rules for Any AI Agent Working on this Repo
-1. **Type Safety:** Always define and maintain strict interfaces in `src/types/index.ts`. Never use `any`.
-2. **Single Source of Truth for Data:** All product specs, dimensions, prices/MSRP, and availability live in `src/data/products.ts` and sync with `vault/02 - Products/`.
-3. **No External Heavy UI Libraries:** Keep the app lean, fast, and maintainable. Use custom Tailwind components or headless patterns.
-4. **Responsive First:** All components must look impeccable on mobile (375px), tablet (768px), and wide desktop (1440px+).
-5. **No Broken Links or Missing Keys:** Ensure all interactive elements have unique IDs and ARIA labels for accessibility and automated testing.
-6. **Industrial Aesthetics:** KingLift represents rugged American industrial power combined with modern lithium-electric engineering. Avoid generic consumer-store aesthetics.
+1. **Titanium UI/UX Standard (MANDATORY):** Strictly adhere to `SKILL-UI-UX.md`. Every component must look ultra-premium, industrial, high-contrast, and responsive. No basic MVP looks.
+2. **Type Safety:** Always define and maintain strict interfaces in `src/types/index.ts`. Never use `any`.
+3. **Single Source of Truth for Data:** All product specs, dimensions, prices/MSRP, and availability live in `src/data/products.ts` and sync with `vault/02 - Products/`.
+4. **No External Heavy UI Libraries:** Keep the app lean, fast, and maintainable with custom Tailwind components and headless patterns.
+5. **Responsive First:** All components must look impeccable on mobile (375px), tablet (768px), and wide desktop (1440px+).
+6. **Dual Unit Presentation:** Provide 1-click Imperial & Metric unit toggling for engineering specs.
+7. **Industrial Aesthetics:** Deep obsidian canvas `#070A11`, safety gold `#F59E0B`, brushed titanium glass, and micro-grid textures. Avoid generic consumer-store fluff.
+
 
 ---
 

@@ -8,13 +8,11 @@
         "type": "tabs",
         "children": [
           {
-            "id": "4ad8bba57d7e4614",
+            "id": "951850f0367f6f79",
             "type": "leaf",
-            "pinned": true,
             "state": {
               "type": "graph",
               "state": {},
-              "pinned": true,
               "icon": "lucide-git-fork",
               "title": "Graph view"
             }
@@ -183,24 +181,26 @@
       "bases:Create new base": false
     }
   },
-  "active": "4ad8bba57d7e4614",
+  "active": "951850f0367f6f79",
   "lastOpenFiles": [
+    "dist/assets/index-BAEy7PdS.css",
+    "dist/assets/web-BO74AneV.js",
+    "dist/assets/index-C2KG1S-y.js",
+    "dist/assets/index-DwhsI76P.css",
+    "dist/assets/web-BHmp3afD.js",
+    "dist/assets/index-ReNR_q1P.js",
+    "SKILL-UI-UX.md",
     "vault/03 - Tech Stack & Architecture/Vercel-Deployment-Guide.md",
     "vercel.json",
     "api/index.ts",
     "api",
     "dist/assets/index-BCUQ7Y38.css",
     "dist/assets/web-C8YxsIBg.js",
-    "dist/assets/index-DxUr5VYi.js",
     "SKILL.md",
-    "dist/assets/index-MdRrl2Fd.css",
-    "dist/assets/web-CHhBoJB6.js",
-    "dist/assets/index-CIX9hCIw.js",
     "README.md",
     "CLAUDE.md",
     "AGENT.md",
     "node_modules/source-map-js/README.md",
-    "src/components/ui/ThemeSwitcher.tsx",
     "vault/03 - Tech Stack & Architecture/Backend-And-Auth-System.md",
     "node_modules/@esbuild/win32-x64/README.md",
     "node_modules/tsx/README.md",
@@ -219,8 +219,6 @@
     "node_modules/concurrently/docs/cli/terminating.md",
     "node_modules/concurrently/docs/cli/success.md",
     "node_modules/concurrently/docs/cli/shortcuts.md",
-    "node_modules/concurrently/docs/cli/restarting.md",
-    "node_modules/concurrently/docs/cli/prefixing.md",
     "node_modules/concurrently/docs/demo.gif"
   ]
 }
