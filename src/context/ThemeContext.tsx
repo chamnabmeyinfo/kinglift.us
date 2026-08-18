@@ -12,7 +12,7 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-const THEME_STORAGE_KEY = 'kinglift_theme_mode_v1';
+const THEME_STORAGE_KEY = 'kinglift_theme_mode_v2';
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setThemeState] = useState<ThemeMode>(() => {
@@ -24,53 +24,58 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     } catch {
       // ignore
     }
-    return 'system';
+    return 'dark'; // Default to heavy industrial dark mode
   });
 
   const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>('dark');
 
-  // Compute resolved theme based on choice and OS preference
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-    const computeResolvedTheme = (): ResolvedTheme => {
-      if (theme === 'system') {
-        return mediaQuery.matches ? 'dark' : 'light';
-      }
-      return theme;
-    };
-
-    const currentResolved = computeResolvedTheme();
-    setResolvedTheme(currentResolved);
-
+  const applyTheme = (targetTheme: ResolvedTheme) => {
+    setResolvedTheme(targetTheme);
     const root = document.documentElement;
-    if (currentResolved === 'dark') {
+    const body = document.body;
+
+    if (targetTheme === 'dark') {
       root.classList.add('dark');
       root.classList.remove('light');
       root.setAttribute('data-theme', 'dark');
       root.style.colorScheme = 'dark';
+
+      if (body) {
+        body.classList.add('dark');
+        body.classList.remove('light');
+        body.setAttribute('data-theme', 'dark');
+      }
     } else {
       root.classList.add('light');
       root.classList.remove('dark');
       root.setAttribute('data-theme', 'light');
       root.style.colorScheme = 'light';
+
+      if (body) {
+        body.classList.add('light');
+        body.classList.remove('dark');
+        body.setAttribute('data-theme', 'light');
+      }
     }
+  };
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const computeResolved = (currentMode: ThemeMode): ResolvedTheme => {
+      if (currentMode === 'system') {
+        return mediaQuery.matches ? 'dark' : 'light';
+      }
+      return currentMode;
+    };
+
+    const resolved = computeResolved(theme);
+    applyTheme(resolved);
 
     const handleSystemChange = () => {
       if (theme === 'system') {
         const newResolved = mediaQuery.matches ? 'dark' : 'light';
-        setResolvedTheme(newResolved);
-        if (newResolved === 'dark') {
-          root.classList.add('dark');
-          root.classList.remove('light');
-          root.setAttribute('data-theme', 'dark');
-          root.style.colorScheme = 'dark';
-        } else {
-          root.classList.add('light');
-          root.classList.remove('dark');
-          root.setAttribute('data-theme', 'light');
-          root.style.colorScheme = 'light';
-        }
+        applyTheme(newResolved);
       }
     };
 
@@ -88,9 +93,11 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   };
 
   const toggleTheme = () => {
-    if (theme === 'dark') setTheme('light');
-    else if (theme === 'light') setTheme('system');
-    else setTheme('dark');
+    if (resolvedTheme === 'dark') {
+      setTheme('light');
+    } else {
+      setTheme('dark');
+    }
   };
 
   return (

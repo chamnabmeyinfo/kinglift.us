@@ -1,50 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&display=swap');
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant light (&:where(.light, .light *));
+
 @layer base {
   :root {
-    --color-brand-charcoal: #070a11;
-    --color-brand-surface: #0e1422;
-    --color-brand-surface-elevated: #141c30;
     --color-brand-amber: #f59e0b;
     --color-brand-amber-dark: #d97706;
-    --color-brand-steel: #334155;
   }
 
-  /* Default Dark Mode & Dark theme */
-  html.dark, :root[data-theme="dark"] {
-    --bg-primary: #070a11;
-    --bg-secondary: #0e1422;
+  /* Default Dark Mode (Heavy Midnight Industrial) */
+  html.dark, :root[data-theme="dark"], body.dark {
+    --bg-page: #06090f;
+    --bg-surface: #0e1422;
     --bg-card: #111827;
     --bg-elevated: #151e32;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
-    --border-subtle: #1e293b;
-    --border-strong: #334155;
-    --accent-glow: rgba(245, 158, 11, 0.15);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --text-subtle: #64748b;
+    --border-color: #1e293b;
+    --border-highlight: #334155;
+    color-scheme: dark;
   }
 
-  /* Daylight Clean Industrial Light Mode */
-  html.light, :root[data-theme="light"] {
-    --bg-primary: #f8fafc;
-    --bg-secondary: #ffffff;
+  /* Clean Daylight Warehouse Mode */
+  html.light, :root[data-theme="light"], body.light {
+    --bg-page: #f8fafc;
+    --bg-surface: #ffffff;
     --bg-card: #ffffff;
     --bg-elevated: #f1f5f9;
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-muted: #64748b;
-    --border-subtle: #e2e8f0;
-    --border-strong: #cbd5e1;
-    --accent-glow: rgba(245, 158, 11, 0.08);
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --text-subtle: #64748b;
+    --border-color: #e2e8f0;
+    --border-highlight: #cbd5e1;
+    color-scheme: light;
   }
 
   body {
-    background-color: var(--bg-primary, #070a11);
-    color: var(--text-primary, #f8fafc);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    transition: background-color 0.25s ease, color 0.25s ease;
+    transition: background-color 0.2s ease, color 0.2s ease;
     -webkit-font-smoothing: antialiased;
+  }
+
+  html.dark body {
+    background-color: #06090f;
+    color: #f8fafc;
+  }
+
+  html.light body {
+    background-color: #f8fafc;
+    color: #0f172a;
   }
 
   h1, h2, h3, .font-display {
@@ -61,43 +68,56 @@
   }
 }
 
-/* Light Mode Specific Overrides */
-html.light .bg-slate-950 {
+/* ============================================================
+   LIGHT MODE COMPREHENSIVE RE-STYLING
+   ============================================================ */
+
+html.light .bg-slate-950,
+html.light .bg-slate-950\/95,
+html.light .bg-slate-950\/90,
+html.light .bg-slate-950\/85,
+html.light .bg-slate-950\/80,
+html.light .bg-slate-950\/70,
+html.light .bg-slate-950\/60,
+html.light .bg-slate-950\/50 {
   background-color: #f8fafc !important;
 }
 
-html.light .bg-slate-900 {
-  background-color: #ffffff !important;
-}
-
+html.light .bg-slate-900,
+html.light .bg-slate-900\/95,
 html.light .bg-slate-900\/90,
 html.light .bg-slate-900\/80,
 html.light .bg-slate-900\/70,
 html.light .bg-slate-900\/60,
 html.light .bg-slate-900\/50,
 html.light .bg-slate-900\/40 {
-  background-color: rgba(255, 255, 255, 0.95) !important;
+  background-color: #ffffff !important;
 }
 
-html.light .bg-slate-950\/95,
-html.light .bg-slate-950\/90,
-html.light .bg-slate-950\/85,
-html.light .bg-slate-950\/80,
-html.light .bg-slate-950\/60 {
-  background-color: rgba(248, 250, 252, 0.95) !important;
+html.light .bg-slate-800,
+html.light .bg-slate-800\/90,
+html.light .bg-slate-800\/80,
+html.light .bg-slate-800\/60,
+html.light .bg-slate-800\/50 {
+  background-color: #f1f5f9 !important;
 }
 
+/* Light Mode Borders */
 html.light .border-slate-800,
+html.light .border-slate-800\/90,
 html.light .border-slate-800\/80,
 html.light .border-slate-800\/60,
+html.light .border-slate-800\/50,
 html.light .border-slate-700,
-html.light .border-slate-700\/80 {
+html.light .border-slate-700\/80,
+html.light .border-slate-700\/60 {
   border-color: #e2e8f0 !important;
 }
 
+/* Light Mode Typography */
+html.light .text-white,
 html.light .text-slate-100,
-html.light .text-slate-200,
-html.light .text-white {
+html.light .text-slate-200 {
   color: #0f172a !important;
 }
 
@@ -109,7 +129,13 @@ html.light .text-slate-400 {
   color: #64748b !important;
 }
 
-html.light .hover\:bg-slate-800:hover {
+html.light .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+/* Light Mode Hover States */
+html.light .hover\:bg-slate-800:hover,
+html.light .hover\:bg-slate-900:hover {
   background-color: #f1f5f9 !important;
 }
 
@@ -117,32 +143,22 @@ html.light .hover\:bg-slate-700:hover {
   background-color: #e2e8f0 !important;
 }
 
-/* Custom Titanium Industrial Scrollbar */
-::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+html.light input,
+html.light textarea,
+html.light select {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--bg-secondary, #0e1422);
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94a3b8 !important;
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--border-strong, #334155);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #f59e0b;
-}
-
-/* High-Impact Visual Textures */
-.industrial-grid {
-  background-size: 36px 36px;
-  background-image: 
-    linear-gradient(to right, rgba(245, 158, 11, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(245, 158, 11, 0.04) 1px, transparent 1px);
-}
+/* ============================================================
+   CARD & TEXTURE STYLES
+   ============================================================ */
 
 .titanium-card {
   background: linear-gradient(145deg, rgba(20, 28, 48, 0.75) 0%, rgba(11, 15, 25, 0.9) 100%);
@@ -158,18 +174,28 @@ html.light .hover\:bg-slate-700:hover {
 }
 
 html.light .titanium-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
 }
 
 html.light .titanium-card:hover {
-  border-color: rgba(245, 158, 11, 0.5);
-  box-shadow: 0 12px 30px rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.6) !important;
+  box-shadow: 0 12px 30px rgba(245, 158, 11, 0.12) !important;
 }
 
-.gold-glow {
-  box-shadow: 0 0 25px rgba(245, 158, 11, 0.2);
+/* Industrial Grid Background */
+.industrial-grid {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(245, 158, 11, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(245, 158, 11, 0.04) 1px, transparent 1px);
+}
+
+html.light .industrial-grid {
+  background-image: 
+    linear-gradient(to right, rgba(245, 158, 11, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(245, 158, 11, 0.07) 1px, transparent 1px);
 }
 
 .gold-border-pulse {
@@ -182,13 +208,25 @@ html.light .titanium-card:hover {
   50% { border-color: rgba(245, 158, 11, 0.8); box-shadow: 0 0 15px rgba(245, 158, 11, 0.25); }
 }
 
-.badge-titanium {
-  background: rgba(30, 41, 59, 0.8);
-  border: 1px solid rgba(51, 65, 85, 0.7);
-  backdrop-filter: blur(8px);
+/* Titanium Industrial Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
 }
 
-html.light .badge-titanium {
+html.dark ::-webkit-scrollbar-track {
+  background: #0e1422;
+}
+
+html.light ::-webkit-scrollbar-track {
   background: #f1f5f9;
-  border: 1px solid #cbd5e1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
 }

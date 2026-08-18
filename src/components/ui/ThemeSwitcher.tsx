@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Sun, Moon, Laptop, ChevronDown } from 'lucide-react';
+import { Sun, Moon, Laptop, ChevronDown, Check } from 'lucide-react';
 import { useTheme, type ThemeMode } from '../../context/ThemeContext';
 
 export const ThemeSwitcher: React.FC<{ compact?: boolean }> = ({ compact = false }) => {
@@ -18,20 +18,16 @@ export const ThemeSwitcher: React.FC<{ compact?: boolean }> = ({ compact = false
   }, []);
 
   const options: { mode: ThemeMode; label: string; icon: React.FC<{ className?: string }> }[] = [
-    { mode: 'light', label: 'Light Mode', icon: Sun },
     { mode: 'dark', label: 'Dark Mode', icon: Moon },
-    { mode: 'system', label: 'System Base', icon: Laptop }
+    { mode: 'light', label: 'Light Mode', icon: Sun },
+    { mode: 'system', label: 'System Mode', icon: Laptop }
   ];
 
-  const currentIcon = resolvedTheme === 'dark' 
-    ? (theme === 'system' ? Laptop : Moon) 
-    : (theme === 'system' ? Laptop : Sun);
-
-  const CurrentIconComponent = currentIcon;
+  const CurrentIcon = theme === 'system' ? Laptop : (resolvedTheme === 'dark' ? Moon : Sun);
 
   if (compact) {
     return (
-      <div className="flex items-center bg-slate-900/80 dark:bg-slate-900 light:bg-slate-100 p-1 rounded-xl border border-slate-700/60 dark:border-slate-800 light:border-slate-300">
+      <div className="flex items-center bg-slate-900 light:bg-slate-200 p-1 rounded-xl border border-slate-700 light:border-slate-300 shadow-inner">
         {options.map((opt) => {
           const Icon = opt.icon;
           const isSelected = theme === opt.mode;
@@ -40,10 +36,10 @@ export const ThemeSwitcher: React.FC<{ compact?: boolean }> = ({ compact = false
               key={opt.mode}
               onClick={() => setTheme(opt.mode)}
               title={opt.label}
-              className={`p-1.5 rounded-lg transition-all ${
+              className={`p-1.5 rounded-lg transition-all cursor-pointer ${
                 isSelected
-                  ? 'bg-amber-500 text-slate-950 shadow-sm font-bold'
-                  : 'text-slate-400 hover:text-slate-200 dark:hover:text-white light:hover:text-slate-900'
+                  ? 'bg-amber-500 text-slate-950 shadow-md font-bold'
+                  : 'text-slate-400 hover:text-white light:text-slate-600 light:hover:text-slate-950'
               }`}
             >
               <Icon className="w-3.5 h-3.5" />
@@ -58,16 +54,19 @@ export const ThemeSwitcher: React.FC<{ compact?: boolean }> = ({ compact = false
     <div className="relative inline-block text-left" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-900/90 dark:bg-slate-900 light:bg-slate-100 border border-slate-700/80 dark:border-slate-800 light:border-slate-300 text-slate-300 dark:text-slate-300 light:text-slate-800 text-xs font-semibold hover:border-amber-400/60 transition-colors shadow-sm"
+        className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-900 light:bg-white border border-slate-700 light:border-slate-300 text-slate-200 light:text-slate-800 text-xs font-bold hover:border-amber-400/60 transition-all shadow-sm cursor-pointer"
         aria-label="Select Theme Mode"
       >
-        <CurrentIconComponent className="w-3.5 h-3.5 text-amber-400" />
-        <span className="capitalize hidden sm:inline">{theme}</span>
-        <ChevronDown className="w-3 h-3 text-slate-400" />
+        <CurrentIcon className="w-4 h-4 text-amber-400" />
+        <span className="capitalize hidden sm:inline">{theme === 'system' ? 'System' : (theme === 'dark' ? 'Dark' : 'Light')}</span>
+        <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${isOpen ? 'rotate-180 text-amber-400' : ''}`} />
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-36 origin-top-right rounded-xl bg-slate-900 dark:bg-slate-900 light:bg-white border border-slate-800 dark:border-slate-800 light:border-slate-200 shadow-2xl z-50 p-1.5 space-y-1">
+        <div className="absolute right-0 mt-2 w-40 origin-top-right rounded-2xl bg-slate-950 light:bg-white border border-slate-700 light:border-slate-200 shadow-2xl z-50 p-1.5 space-y-1 gold-border-pulse">
+          <div className="text-[10px] uppercase font-mono font-bold text-slate-400 light:text-slate-500 px-2 py-1">
+            Display Mode:
+          </div>
           {options.map((opt) => {
             const Icon = opt.icon;
             const isSelected = theme === opt.mode;
@@ -78,17 +77,17 @@ export const ThemeSwitcher: React.FC<{ compact?: boolean }> = ({ compact = false
                   setTheme(opt.mode);
                   setIsOpen(false);
                 }}
-                className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                   isSelected
-                    ? 'bg-amber-500 text-slate-950 font-bold shadow-sm'
-                    : 'text-slate-300 dark:text-slate-300 light:text-slate-700 hover:bg-slate-800 dark:hover:bg-slate-800 light:hover:bg-slate-100 hover:text-white dark:hover:text-white light:hover:text-slate-950'
+                    ? 'bg-amber-500 text-slate-950 font-bold shadow-md'
+                    : 'text-slate-300 light:text-slate-700 hover:bg-slate-900 light:hover:bg-slate-100 hover:text-amber-400 light:hover:text-slate-950'
                 }`}
               >
                 <div className="flex items-center gap-2">
                   <Icon className="w-3.5 h-3.5" />
                   <span>{opt.label}</span>
                 </div>
-                {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-slate-950"></span>}
+                {isSelected && <Check className="w-3.5 h-3.5 text-slate-950" />}
               </button>
             );
           })}
