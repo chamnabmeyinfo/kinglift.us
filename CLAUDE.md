@@ -29,7 +29,8 @@
 - Base Dark: Deep Industrial Charcoal (`#0F172A`, `#1E293B`).
 - High contrast, legible typography, crisp spec tables, clear visual hierarchy.
 
-## 🚨 Git & GitHub Push Policy
-- **Autonomous Local Execution:** You may run local commands (dev, build, lint, tests) without asking.
-- **Mandatory User Confirmation for GitHub Push:** **ALWAYS ask the user for confirmation before pushing code to GitHub (`git push`).** Do not push automatically without explicit approval.
+## ⚡ Autonomous Execution & GitHub Operations (AUTO-APPROVED)
+- **Auto-Approved Git/GitHub Commands:** All Git commands (`git add`, `git commit`, `git push`) and `gh` CLI operations are **pre-approved by the owner**.
+- **Execution Workflow:** Implement changes, verify with `npm run build`, commit with descriptive message, and push directly to GitHub remote repository (`chamnabmeyinfo/kinglift.us`).
+
 

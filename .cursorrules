@@ -9,5 +9,6 @@ You are an expert full-stack engineer and industrial designer working on KingLif
 4. Product data lives in `src/data/products.ts` and syncs with `vault/02 - Products/`.
 5. Maintain strict TypeScript types without any `any`.
 6. Run `npm run build` to verify before completing changes.
-7. **Git Push Rule**: Always ask the user for explicit confirmation before pushing code to GitHub (`git push`). Do not push automatically.
+7. **GitHub Operations Pre-Approved**: All git operations (`git add`, `git commit`, `git push`) are pre-authorized and auto-approved. Push verified changes directly to GitHub.
+
 

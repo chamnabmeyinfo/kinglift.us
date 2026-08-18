@@ -71,8 +71,9 @@ When updating pages or products:
 
 ---
 
-## 4. Git & GitHub Push Protocol
+## 4. Git & GitHub Operations (AUTO-APPROVED)
 
-- **Local Autonomy:** Agents are free to run local development, building (`npm run build`), linting, and testing commands autonomously.
-- **Mandatory Confirmation for Remote Push:** **NEVER push to GitHub (`git push`) without first asking the user for explicit confirmation.** Always present the summary of changes and ask if the user wants to push to GitHub.
+- **Owner Pre-Authorization:** All Git commands (`git add`, `git commit`, `git push`) and `gh` operations are **fully auto-approved by the owner**.
+- **Standard Workflow:** Verify changes with `npm run build`, commit changes with a descriptive summary, and immediately push to GitHub (`origin main`).
+
 
