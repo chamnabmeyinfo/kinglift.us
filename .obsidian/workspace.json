@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "f6d4901c85125a4a",
+        "id": "e38f797eec7aee4b",
         "type": "tabs",
         "children": [
           {
-            "id": "951850f0367f6f79",
+            "id": "9fb81e0fcabef7d8",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -181,19 +181,21 @@
       "bases:Create new base": false
     }
   },
-  "active": "951850f0367f6f79",
+  "active": "9fb81e0fcabef7d8",
   "lastOpenFiles": [
+    "dist/assets/index-B9TgYCvY.css",
+    "dist/assets/web-BMwAFk92.js",
+    "dist/assets/index-BoRiCtZJ.js",
+    "src/components/tools/ComparisonModal.tsx",
+    "src/components/layout/FloatingCommandBar.tsx",
+    "src/components/home/TCOCalculator.tsx",
+    "src/context/ToastContext.tsx",
+    "vault/01 - Brand & Identity/UX-UI-ProMax-Skill.md",
+    "SKILL-UX-UI-PROMAX.md",
     "dist/assets/index-Dfhz2yXu.css",
     "dist/assets/web-BwywFy8e.js",
     "dist/assets/index-2B-oEpKE.js",
     "node_modules/esbuild/package.json",
-    "src/components/home/QuickQuoteBanner.tsx",
-    "src/components/home/IndustrySectors.tsx",
-    "src/components/home/HeavyMachineryShowcase.tsx",
-    "src/components/home",
-    "dist/assets/index-BAEy7PdS.css",
-    "dist/assets/web-BO74AneV.js",
-    "dist/assets/index-C2KG1S-y.js",
     "SKILL-UI-UX.md",
     "vault/03 - Tech Stack & Architecture/Vercel-Deployment-Guide.md",
     "SKILL.md",
@@ -217,8 +219,6 @@
     "node_modules/emoji-regex/README.md",
     "node_modules/ansi-regex/readme.md",
     "node_modules/concurrently/docs/cli/terminating.md",
-    "node_modules/concurrently/docs/cli/success.md",
-    "node_modules/concurrently/docs/cli/shortcuts.md",
     "node_modules/concurrently/docs/demo.gif"
   ]
 }

@@ -89,13 +89,14 @@ kinglift.us/
 - **Feedback & Micro-interactions:** `canvas-confetti`, smooth transitions
 
 ### Golden Rules for Any AI Agent Working on this Repo
-1. **Titanium UI/UX Standard (MANDATORY):** Strictly adhere to `SKILL-UI-UX.md`. Every component must look ultra-premium, industrial, high-contrast, and responsive. No basic MVP looks.
+1. **UX/UI ProMax Standard (MANDATORY):** Strictly adhere to `SKILL-UX-UI-PROMAX.md` & `SKILL-UI-UX.md`. Every component must look cinematic, powerful, high-contrast, and responsive. No basic or flat MVP looks.
 2. **Type Safety:** Always define and maintain strict interfaces in `src/types/index.ts`. Never use `any`.
 3. **Single Source of Truth for Data:** All product specs, dimensions, prices/MSRP, and availability live in `src/data/products.ts` and sync with `vault/02 - Products/`.
 4. **No External Heavy UI Libraries:** Keep the app lean, fast, and maintainable with custom Tailwind components and headless patterns.
 5. **Responsive First:** All components must look impeccable on mobile (375px), tablet (768px), and wide desktop (1440px+).
 6. **Dual Unit Presentation:** Provide 1-click Imperial & Metric unit toggling for engineering specs.
-7. **Industrial Aesthetics:** Deep obsidian canvas `#070A11`, safety gold `#F59E0B`, brushed titanium glass, and micro-grid textures. Avoid generic consumer-store fluff.
+7. **Industrial Aesthetics:** Deep obsidian canvas `#06090F`, safety gold `#F59E0B`, brushed titanium glass, and micro-grid textures.
+
 
 
 ---
