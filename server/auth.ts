@@ -5,6 +5,35 @@ import { db, User } from './db.js';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'kinglift_secret_key_2026_industrial_secure_token';
 
+export const ALLOWED_DOMAINS = ['@kinglift.us', '@s3vtgroup.com.kh'];
+export const ALLOWED_SPECIFIC_EMAILS = ['chamnabmey.info@gmail.com'];
+
+/**
+ * Validates if an email address belongs to the authorized whitelist
+ * Authorized:
+ * 1. Domain: @kinglift.us
+ * 2. Domain: @s3vtgroup.com.kh
+ * 3. Specific: chamnabmey.info@gmail.com
+ */
+export const isAllowedEmail = (email: string): boolean => {
+  if (!email) return false;
+  const cleanEmail = email.trim().toLowerCase();
+
+  // Check specific email whitelist
+  if (ALLOWED_SPECIFIC_EMAILS.includes(cleanEmail)) {
+    return true;
+  }
+
+  // Check authorized domains
+  for (const domain of ALLOWED_DOMAINS) {
+    if (cleanEmail.endsWith(domain)) {
+      return true;
+    }
+  }
+
+  return false;
+};
+
 export interface AuthRequest extends Request {
   user?: User;
 }
@@ -49,7 +78,7 @@ export const authenticateToken = (req: AuthRequest, res: Response, next: NextFun
 
     req.user = user;
     next();
-  } catch (err) {
+  } catch {
     return res.status(403).json({ error: 'Invalid or expired token' });
   }
 };

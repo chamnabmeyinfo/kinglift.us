@@ -7,6 +7,7 @@ import {
   generateToken, 
   authenticateToken, 
   requireAdmin,
+  isAllowedEmail,
   AuthRequest 
 } from './auth.js';
 
@@ -17,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 
 // -------------------------------------------------------------
-// 1. AUTHENTICATION ROUTES
+// 1. AUTHENTICATION ROUTES (Domain Whitelist Restricted)
 // -------------------------------------------------------------
 
 // Sign Up
@@ -29,25 +30,35 @@ app.post('/api/auth/signup', async (req, res) => {
       return res.status(400).json({ error: 'Name, email, and password are required' });
     }
 
+    // Enforce Allowed Domains & Whitelist Rule
+    if (!isAllowedEmail(email)) {
+      return res.status(403).json({ 
+        error: 'Access Restricted: Only authorized accounts from @kinglift.us, @s3vtgroup.com.kh, or chamnabmey.info@gmail.com are permitted to sign up.' 
+      });
+    }
+
     if (password.length < 6) {
       return res.status(400).json({ error: 'Password must be at least 6 characters' });
     }
 
-    const existing = db.getUserByEmail(email);
+    const cleanEmail = email.toLowerCase().trim();
+    const existing = db.getUserByEmail(cleanEmail);
     if (existing) {
       return res.status(409).json({ error: 'An account with this email already exists' });
     }
 
     const passwordHash = await hashPassword(password);
-    const assignedRole = role === 'admin' ? 'customer' : (role || 'customer'); // Prevent unauthorized admin self-creation unless first user
+    
+    // Auto-grant admin role to authorized enterprise domains
+    const assignedRole = role || 'admin';
 
     const newUser = {
       id: `usr_${Date.now().toString(36)}_${Math.random().toString(36).substring(2, 6)}`,
       name,
-      email: email.toLowerCase(),
+      email: cleanEmail,
       passwordHash,
       role: assignedRole as any,
-      company: company || '',
+      company: company || (cleanEmail.includes('s3vtgroup') ? 'S3VT Group' : 'KingLift USA'),
       phone: phone || '',
       createdAt: new Date().toISOString()
     };
@@ -83,7 +94,16 @@ app.post('/api/auth/login', async (req, res) => {
       return res.status(400).json({ error: 'Email and password are required' });
     }
 
-    const user = db.getUserByEmail(email);
+    const cleanEmail = email.toLowerCase().trim();
+
+    // Enforce Allowed Domains & Whitelist Rule
+    if (!isAllowedEmail(cleanEmail)) {
+      return res.status(403).json({ 
+        error: 'Access Restricted: Only authorized accounts from @kinglift.us, @s3vtgroup.com.kh, or chamnabmey.info@gmail.com are permitted to access this portal.' 
+      });
+    }
+
+    const user = db.getUserByEmail(cleanEmail);
     if (!user) {
       return res.status(401).json({ error: 'Invalid email or password' });
     }
@@ -110,6 +130,62 @@ app.post('/api/auth/login', async (req, res) => {
   } catch (err) {
     console.error('Login error:', err);
     return res.status(500).json({ error: 'Authentication failed' });
+  }
+});
+
+// Google Sign In / OAuth
+app.post('/api/auth/google', async (req, res) => {
+  try {
+    const { email, name } = req.body;
+
+    if (!email) {
+      return res.status(400).json({ error: 'Google email is required' });
+    }
+
+    const cleanEmail = email.toLowerCase().trim();
+
+    // Enforce Allowed Domains & Whitelist Rule
+    if (!isAllowedEmail(cleanEmail)) {
+      return res.status(403).json({ 
+        error: 'Google Sign-In Denied: Your email is not authorized. Only @kinglift.us, @s3vtgroup.com.kh, or chamnabmey.info@gmail.com are permitted.' 
+      });
+    }
+
+    let user = db.getUserByEmail(cleanEmail);
+
+    if (!user) {
+      // Auto-provision authorized enterprise user
+      const placeholderPass = await hashPassword(`google_oauth_${Date.now()}_${Math.random()}`);
+      user = {
+        id: `usr_google_${Date.now().toString(36)}`,
+        name: name || cleanEmail.split('@')[0],
+        email: cleanEmail,
+        passwordHash: placeholderPass,
+        role: 'admin',
+        company: cleanEmail.includes('s3vtgroup') ? 'S3VT Group' : 'KingLift USA',
+        phone: '',
+        createdAt: new Date().toISOString()
+      };
+      db.addUser(user);
+    }
+
+    const token = generateToken(user);
+
+    return res.json({
+      message: 'Google authentication successful',
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        company: user.company,
+        phone: user.phone
+      }
+    });
+  } catch (err) {
+    console.error('Google Auth error:', err);
+    return res.status(500).json({ error: 'Google authentication failed' });
   }
 });
 

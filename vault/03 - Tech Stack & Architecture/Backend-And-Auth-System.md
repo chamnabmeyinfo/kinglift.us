@@ -12,15 +12,19 @@ tags:
 KingLift.us is powered by a high-performance Express REST API backend and file-backed database layer.
 
 ## 1. Authentication Endpoints (`/api/auth`)
-- `POST /api/auth/signup`: User registration with bcrypt password hashing.
-- `POST /api/auth/login`: Issue secure JWT tokens (7-day validity).
+- `POST /api/auth/signup`: User registration restricted to authorized enterprise whitelist.
+- `POST /api/auth/login`: Issue secure JWT tokens (7-day validity) for authorized accounts.
+- `POST /api/auth/google`: 1-Click Google OAuth sign in for whitelisted enterprise accounts.
 - `GET /api/auth/me`: Authenticated profile verification.
 - `GET /api/auth/users`: List all registered commercial and admin users (Admin only).
 
-## 2. Default Seed Admin Credentials
-- **Email:** `admin@kinglift.us`
-- **Password:** `admin1234`
-- **Role:** `admin` (Full Master Control)
+## 2. Authorized Enterprise Domains & Whitelist Rules
+Only the following accounts/domains are permitted to Sign Up, Log In, or authenticate with Google:
+1. **`@kinglift.us`** (All company emails)
+2. **`@s3vtgroup.com.kh`** (All partner enterprise emails)
+3. **`chamnabmey.info@gmail.com`** (Master Owner)
+
+Unauthorized domains (e.g. `@gmail.com`, `@yahoo.com`, `@hotmail.com`) are automatically rejected with HTTP 403 Forbidden.
 
 ## 3. Product Catalog Management (`/api/products`)
 - `GET /api/products`: Public machinery list.

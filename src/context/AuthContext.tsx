@@ -8,6 +8,7 @@ interface AuthContextType {
   isAdmin: boolean;
   isSales: boolean;
   login: (email: string, password: string) => Promise<void>;
+  loginWithGoogle: (googleData: { email: string; name: string; picture?: string }) => Promise<void>;
   signup: (userData: { name: string; email: string; password: string; company?: string; phone?: string }) => Promise<void>;
   logout: () => void;
   authModalOpen: boolean;
@@ -75,6 +76,26 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setAuthModalOpen(false);
   };
 
+  const loginWithGoogle = async (googleData: { email: string; name: string; picture?: string }) => {
+    const res = await fetch('/api/auth/google', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(googleData)
+    });
+
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.error || 'Google login failed');
+    }
+
+    const { token: jwtToken, user: authUser } = data as AuthResponse;
+    setToken(jwtToken);
+    setUser(authUser);
+    localStorage.setItem(TOKEN_KEY, jwtToken);
+    localStorage.setItem(USER_KEY, JSON.stringify(authUser));
+    setAuthModalOpen(false);
+  };
+
   const signup = async (userData: { name: string; email: string; password: string; company?: string; phone?: string }) => {
     const res = await fetch('/api/auth/signup', {
       method: 'POST',
@@ -124,6 +145,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isAdmin,
         isSales,
         login,
+        loginWithGoogle,
         signup,
         logout,
         authModalOpen,

@@ -9,6 +9,26 @@
       "company": "KingLift Headquarters USA",
       "phone": "1-800-555-5464",
       "createdAt": "2026-08-18T04:55:21.620Z"
+    },
+    {
+      "id": "usr_google_msy7ytfn",
+      "name": "Chamnab Mey",
+      "email": "chamnabmey.info@gmail.com",
+      "passwordHash": "$2b$10$Sz62dZmSr.WKUXFr6J4Al.BhdzoZYpvmC5YEM.UTmi8KA4WvR7sdu",
+      "role": "admin",
+      "company": "KingLift USA",
+      "phone": "",
+      "createdAt": "2026-08-18T05:25:47.267Z"
+    },
+    {
+      "id": "usr_google_msy7ytin",
+      "name": "S3VT Admin",
+      "email": "admin@s3vtgroup.com.kh",
+      "passwordHash": "$2b$10$dggUs8dm2CxR1kbnzqlhT.wGdKAgIbndZ0L3KaNiqpLxriHlTLBpq",
+      "role": "admin",
+      "company": "S3VT Group",
+      "phone": "",
+      "createdAt": "2026-08-18T05:25:47.375Z"
     }
   ],
   "products": [
