@@ -10,9 +10,11 @@
           {
             "id": "4ad8bba57d7e4614",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "graph",
               "state": {},
+              "pinned": true,
               "icon": "lucide-git-fork",
               "title": "Graph view"
             }
@@ -183,18 +185,22 @@
   },
   "active": "4ad8bba57d7e4614",
   "lastOpenFiles": [
+    "SKILL.md",
+    "dist/assets/index-MdRrl2Fd.css",
+    "dist/assets/web-CHhBoJB6.js",
+    "dist/assets/index-CIX9hCIw.js",
+    "README.md",
+    "CLAUDE.md",
+    "AGENT.md",
+    "node_modules/source-map-js/README.md",
+    "src/components/ui/ThemeSwitcher.tsx",
+    "src/components/ui",
+    "src/context/ThemeContext.tsx",
     "dist/assets/index-BXH8yrj-.css",
     "dist/assets/web-BK-JVUsV.js",
     "dist/assets/index-DQj1RAww.js",
     "src/components/admin/AIAgentConsole.tsx",
-    "server/agent/agentEngine.ts",
-    "server/agent",
     "vault/03 - Tech Stack & Architecture/Backend-And-Auth-System.md",
-    "server/data/db.json",
-    "server/data",
-    "dist/assets/index-Dsqni3_R.css",
-    "dist/assets/web-Dnzr0IIH.js",
-    "dist/assets/index-Mf-EozEc.js",
     "node_modules/@esbuild/win32-x64/README.md",
     "node_modules/tsx/README.md",
     "node_modules/shell-quote/security.md",
@@ -215,10 +221,6 @@
     "node_modules/concurrently/docs/cli/restarting.md",
     "node_modules/concurrently/docs/cli/prefixing.md",
     "node_modules/concurrently/docs/cli/passthrough-arguments.md",
-    "node_modules/concurrently/docs/cli/output-control.md",
-    "node_modules/concurrently/docs/cli/input-handling.md",
-    "node_modules/concurrently/docs/cli/configuration.md",
-    "node_modules/concurrently/docs/shell-resolution.md",
     "node_modules/concurrently/docs/demo.gif"
   ]
 }

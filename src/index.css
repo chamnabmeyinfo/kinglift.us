@@ -10,10 +10,37 @@
     --color-brand-steel: #334155;
   }
 
+  /* Default Dark Mode & Dark theme */
+  html.dark, :root[data-theme="dark"] {
+    --bg-primary: #0b0f19;
+    --bg-secondary: #0f172a;
+    --bg-card: #131d31;
+    --bg-elevated: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border-subtle: #1e293b;
+    --border-strong: #334155;
+  }
+
+  /* Daylight Clean Industrial Light Mode */
+  html.light, :root[data-theme="light"] {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --bg-elevated: #f1f5f9;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --border-subtle: #e2e8f0;
+    --border-strong: #cbd5e1;
+  }
+
   body {
-    background-color: #0b0f19;
-    color: #f1f5f9;
+    background-color: var(--bg-primary, #0b0f19);
+    color: var(--text-primary, #f8fafc);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
   h1, h2, h3, .font-display {
@@ -26,6 +53,60 @@
   }
 }
 
+/* Light Mode Overrides for Slate Components */
+html.light .bg-slate-950 {
+  background-color: #f8fafc !important;
+}
+
+html.light .bg-slate-900 {
+  background-color: #ffffff !important;
+}
+
+html.light .bg-slate-900\/90,
+html.light .bg-slate-900\/80,
+html.light .bg-slate-900\/60,
+html.light .bg-slate-900\/50,
+html.light .bg-slate-900\/40 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+html.light .bg-slate-950\/95,
+html.light .bg-slate-950\/85,
+html.light .bg-slate-950\/80,
+html.light .bg-slate-950\/60 {
+  background-color: rgba(248, 250, 252, 0.95) !important;
+}
+
+html.light .border-slate-800,
+html.light .border-slate-800\/80,
+html.light .border-slate-800\/60,
+html.light .border-slate-700,
+html.light .border-slate-700\/80 {
+  border-color: #e2e8f0 !important;
+}
+
+html.light .text-slate-100,
+html.light .text-slate-200,
+html.light .text-white {
+  color: #0f172a !important;
+}
+
+html.light .text-slate-300 {
+  color: #334155 !important;
+}
+
+html.light .text-slate-400 {
+  color: #64748b !important;
+}
+
+html.light .hover\:bg-slate-800:hover {
+  background-color: #f1f5f9 !important;
+}
+
+html.light .hover\:bg-slate-700:hover {
+  background-color: #e2e8f0 !important;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -33,11 +114,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: var(--bg-secondary, #0f172a);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: var(--border-strong, #334155);
   border-radius: 4px;
 }
 
@@ -45,21 +126,26 @@
   background: #f59e0b;
 }
 
-/* Subtle industrial glow and pattern */
+/* Subtle industrial grid */
 .industrial-grid {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(245, 158, 11, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(245, 158, 11, 0.05) 1px, transparent 1px);
 }
 
 .gold-gradient-border {
-  border: 1px solid rgba(245, 158, 11, 0.25);
-  box-shadow: 0 0 20px rgba(245, 158, 11, 0.05);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.08);
 }
 
 .glass-card {
   background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(51, 65, 85, 0.6);
+}
+
+html.light .glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(226, 232, 240, 0.8);
 }

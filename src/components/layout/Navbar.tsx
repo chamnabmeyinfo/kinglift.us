@@ -16,6 +16,7 @@ import {
 import { useQuoteCart } from '../../context/QuoteCartContext';
 import { useProductFilter } from '../../context/FilterContext';
 import { useAuth } from '../../context/AuthContext';
+import { ThemeSwitcher } from '../ui/ThemeSwitcher';
 
 interface NavbarProps {
   onOpenCalculator: () => void;
@@ -166,6 +167,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCalculator, onOpenAIAdviso
           {/* User Auth & RFQ Cart Buttons */}
           <div className="flex items-center gap-3">
             
+            {/* Theme Mode Switcher (Dark, Light, System) */}
+            <ThemeSwitcher />
+
             {/* Admin Control Center Trigger */}
             {isAdmin && (
               <button
@@ -299,13 +303,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCalculator, onOpenAIAdviso
                 <ArrowRight className="w-4 h-4 text-amber-400" />
               </button>
 
-              <button 
-                onClick={() => scrollToSection('contact')} 
-                className="flex items-center justify-between text-left py-2"
-              >
-                <span>Factory Contact & Support</span>
-                <ArrowRight className="w-4 h-4 text-amber-400" />
-              </button>
+              <div className="pt-2 border-t border-slate-800 flex items-center justify-between">
+                <span className="text-xs text-slate-400">Theme Mode:</span>
+                <ThemeSwitcher compact />
+              </div>
             </div>
           </div>
         )}

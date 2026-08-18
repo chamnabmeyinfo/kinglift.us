@@ -2,6 +2,7 @@ import React from 'react';
 import { ShieldCheck, PhoneCall, Mail, MapPin, FileCode2 } from 'lucide-react';
 import { CATEGORIES } from '../../data/categories';
 import { useProductFilter } from '../../context/FilterContext';
+import { ThemeSwitcher } from '../ui/ThemeSwitcher';
 import type { ProductCategory } from '../../types';
 
 interface FooterProps {
@@ -136,6 +137,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenCalculator, onOpenAIAdviso
           </div>
 
           <div className="flex items-center gap-4">
+            <ThemeSwitcher />
             <span className="flex items-center gap-1.5 text-slate-400">
               <FileCode2 className="w-3.5 h-3.5 text-amber-400" />
               Obsidian Knowledge Base Ready (`/vault`)

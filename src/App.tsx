@@ -174,14 +174,18 @@ const MainApp: React.FC = () => {
   );
 };
 
+import { ThemeProvider } from './context/ThemeContext';
+
 export default function App() {
   return (
-    <AuthProvider>
-      <QuoteCartProvider>
-        <FilterProvider>
-          <MainApp />
-        </FilterProvider>
-      </QuoteCartProvider>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <QuoteCartProvider>
+          <FilterProvider>
+            <MainApp />
+          </FilterProvider>
+        </QuoteCartProvider>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
