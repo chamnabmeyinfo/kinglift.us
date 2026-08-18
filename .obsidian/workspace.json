@@ -1,0 +1,224 @@
+{
+  "main": {
+    "id": "079787e80c46db9b",
+    "type": "split",
+    "children": [
+      {
+        "id": "f6d4901c85125a4a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4ad8bba57d7e4614",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "95ecdde87a237c17",
+    "type": "split",
+    "children": [
+      {
+        "id": "d8a346a64bbed5d8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8ced18178dcfeb25",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "336585ced1049ef4",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "0a2782ceaecab0d4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "db0a33dde9d9b6a6",
+    "type": "split",
+    "children": [
+      {
+        "id": "fa2dfc33898645a2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "edb153db2fd6376d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "40c7245b11975d0b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "b4a06ae2567e0ea2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "a12cc4caecf736c0",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "cdbdfff711ffb706",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "4ad8bba57d7e4614",
+  "lastOpenFiles": [
+    "vault/03 - Tech Stack & Architecture/Backend-And-Auth-System.md",
+    "server/data/db.json",
+    "server/data",
+    "dist/assets/index-Dsqni3_R.css",
+    "dist/assets/web-Dnzr0IIH.js",
+    "dist/assets/index-Mf-EozEc.js",
+    "src/components/admin/AdminDashboard.tsx",
+    "src/components/admin",
+    "src/components/auth/AuthModal.tsx",
+    "src/components/auth",
+    "src/context/AuthContext.tsx",
+    "node_modules/@esbuild/win32-x64/README.md",
+    "node_modules/tsx/README.md",
+    "node_modules/shell-quote/security.md",
+    "node_modules/shell-quote/README.md",
+    "node_modules/yargs-parser/CHANGELOG.md",
+    "node_modules/get-east-asian-width/readme.md",
+    "node_modules/esbuild/README.md",
+    "node_modules/esbuild/LICENSE.md",
+    "node_modules/tree-kill/README.md",
+    "node_modules/escalade/readme.md",
+    "node_modules/ansi-styles/readme.md",
+    "node_modules/strip-ansi/readme.md",
+    "node_modules/emoji-regex/README.md",
+    "node_modules/ansi-regex/readme.md",
+    "node_modules/concurrently/docs/cli/terminating.md",
+    "node_modules/concurrently/docs/cli/success.md",
+    "node_modules/concurrently/docs/cli/shortcuts.md",
+    "node_modules/concurrently/docs/cli/restarting.md",
+    "node_modules/concurrently/docs/cli/prefixing.md",
+    "node_modules/concurrently/docs/cli/passthrough-arguments.md",
+    "node_modules/concurrently/docs/cli/output-control.md",
+    "node_modules/concurrently/docs/cli/input-handling.md",
+    "node_modules/concurrently/docs/cli/configuration.md",
+    "node_modules/concurrently/docs/shell-resolution.md",
+    "node_modules/concurrently/docs/README.md",
+    "node_modules/concurrently/docs/demo.gif"
+  ]
+}
