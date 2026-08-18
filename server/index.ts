@@ -450,12 +450,14 @@ app.post('/api/agent/execute', authenticateToken, requireAdmin, async (req: Auth
   }
 });
 
-// Get Agent Audit History
-app.get('/api/agent/history', authenticateToken, requireAdmin, (_req, res) => {
-  return res.json({ history: agentExecutionHistory.slice(0, 50) });
-});
+// Export app for Vercel Serverless Functions
+export { app };
 
-app.listen(PORT, () => {
-  console.log(`⚡ KingLift Control Backend API running on port ${PORT}`);
-});
+// Start standalone HTTP server when executed directly in Node
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`⚡ KingLift Control Backend API running on port ${PORT}`);
+  });
+}
+
 
