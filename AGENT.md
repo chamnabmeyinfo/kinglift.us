@@ -159,11 +159,20 @@ npm run preview
 
 ---
 
-## 6. Multi-Agent Collaboration Protocol
+## 6. Multi-Agent Collaboration Protocol & Git Push Policy
 
+### 🚨 Mandatory Git Push Rule:
+> **IMPORTANT:** AI coding models (Antigravity, Claude, Cursor, Windsurf, Copilot, etc.) have full autonomy to edit files, build, and test locally.
+> **HOWEVER, before running `git push` to GitHub, the AI Agent MUST ALWAYS ASK THE USER FOR CONFIRMATION FIRST.**
+> - Example confirmation prompt: *"I have made and verified the updates locally. Would you like me to commit and push these changes to GitHub (kinglift.us)?"*
+> - **DO NOT push to GitHub automatically without explicit user confirmation.**
+
+### General Collaboration Rules:
 When another AI model (Claude, Cursor, GPT-4, DeepSeek) joins this repository:
 1. **Read `AGENT.md` and `CLAUDE.md` first.**
 2. **Check `vault/00 - MOC/Home.md`** to understand domain knowledge and product roadmap.
 3. **If adding a new product:** Add it to both `src/data/products.ts` and create a matching Markdown document in `vault/02 - Products/<model-number>.md`.
 4. **If modifying styling:** Adhere to the design tokens defined in `src/index.css` and `vault/01 - Brand & Voice/Design-System.md`.
 5. **Always verify compilation:** Run `npm run build` to confirm zero TypeScript and bundler errors before concluding.
+6. **Ask before pushing:** Always ask the user before pushing commits to GitHub.
+

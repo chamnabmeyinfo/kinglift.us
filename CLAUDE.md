@@ -28,3 +28,8 @@
 - Primary Accent: Safety Gold / Industrial Amber (`#F59E0B`, `#D97706`).
 - Base Dark: Deep Industrial Charcoal (`#0F172A`, `#1E293B`).
 - High contrast, legible typography, crisp spec tables, clear visual hierarchy.
+
+## 🚨 Git & GitHub Push Policy
+- **Autonomous Local Execution:** You may run local commands (dev, build, lint, tests) without asking.
+- **Mandatory User Confirmation for GitHub Push:** **ALWAYS ask the user for confirmation before pushing code to GitHub (`git push`).** Do not push automatically without explicit approval.
+

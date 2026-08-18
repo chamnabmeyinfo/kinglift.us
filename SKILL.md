@@ -68,3 +68,11 @@ When updating pages or products:
 - Maintain Schema.org `Product` JSON-LD in `index.html` or dynamic React Helmet/head injectors.
 - Include `brand: { "@type": "Brand", "name": "KingLift" }`.
 - Provide clear `offers: { "@type": "Offer", "priceCurrency": "USD" }`.
+
+---
+
+## 4. Git & GitHub Push Protocol
+
+- **Local Autonomy:** Agents are free to run local development, building (`npm run build`), linting, and testing commands autonomously.
+- **Mandatory Confirmation for Remote Push:** **NEVER push to GitHub (`git push`) without first asking the user for explicit confirmation.** Always present the summary of changes and ask if the user wants to push to GitHub.
+
