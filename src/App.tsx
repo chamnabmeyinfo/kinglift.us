@@ -13,11 +13,15 @@ import { QuoteDrawer } from './components/quote-cart/QuoteDrawer';
 import { RFQSuccessModal } from './components/quote-cart/RFQSuccessModal';
 import { LiftCalculator } from './components/tools/LiftCalculator';
 import { AIConsultant } from './components/tools/AIConsultant';
+import { HeavyMachineryShowcase } from './components/home/HeavyMachineryShowcase';
+import { IndustrySectors } from './components/home/IndustrySectors';
+import { QuickQuoteBanner } from './components/home/QuickQuoteBanner';
 import { ContactSection } from './components/contact/ContactSection';
 import { AuthModal } from './components/auth/AuthModal';
 import { AdminDashboard } from './components/admin/AdminDashboard';
 import { Footer } from './components/layout/Footer';
 import type { Product } from './types';
+import { PRODUCTS } from './data/products';
 import { X } from 'lucide-react';
 
 const MainApp: React.FC = () => {
@@ -35,6 +39,13 @@ const MainApp: React.FC = () => {
     }
   };
 
+  const handleSelectProductById = (id: string) => {
+    const found = PRODUCTS.find(p => p.id === id || p.modelNumber === id);
+    if (found) {
+      setSelectedProduct(found);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-amber-500 selection:text-slate-950">
       
@@ -48,29 +59,43 @@ const MainApp: React.FC = () => {
       {/* Main Content Areas */}
       <main className="flex-1">
         
-        {/* Hero Section */}
+        {/* 1. Hero Section */}
         <Hero 
           onExploreCatalog={handleExploreCatalog}
           onOpenCalculator={() => setCalculatorOpen(true)}
           onOpenAIAdvisor={() => setAiAdvisorOpen(true)}
         />
 
-        {/* Brand Trust & Warranty Strip */}
+        {/* 2. Brand Trust & 48-Hour Dispatch Hubs */}
         <BrandTrust />
 
-        {/* Product Catalog Showcase */}
-        <section id="catalog" className="py-16 max-w-7xl mx-auto px-4 sm:px-8">
+        {/* 3. Heavy Industrial Tonnage Showcase */}
+        <HeavyMachineryShowcase 
+          onSelectProduct={handleSelectProductById}
+          onOpenCalculator={() => setCalculatorOpen(true)}
+        />
+
+        {/* 4. Instant ZIP Transit & Quote Estimator */}
+        <QuickQuoteBanner 
+          onOpenCalculator={() => setCalculatorOpen(true)}
+        />
+
+        {/* 5. Key Industry Verticals */}
+        <IndustrySectors />
+
+        {/* 6. Product Catalog Showcase */}
+        <section id="catalog" className="py-20 max-w-7xl mx-auto px-4 sm:px-8">
           
           {/* Section Heading */}
-          <div className="mb-8 space-y-2">
-            <div className="text-xs font-bold text-amber-400 uppercase tracking-widest">
-              Commercial Machinery Lineup
+          <div className="mb-10 space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[10px] font-mono font-bold uppercase tracking-widest">
+              FULL COMMERCIAL INVENTORY
             </div>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-              <h2 className="text-2xl sm:text-3xl font-black text-white uppercase font-display">
-                Proprietary KingLift Machinery
+              <h2 className="text-2xl sm:text-4xl font-black text-white uppercase font-display tracking-tight">
+                Proprietary KingLift Machinery Lineup
               </h2>
-              <p className="text-xs text-slate-400 max-w-md">
+              <p className="text-xs sm:text-sm text-slate-400 max-w-md leading-relaxed">
                 Direct factory pricing with comprehensive specs, instant quotes, and verified North American inventory.
               </p>
             </div>
@@ -98,7 +123,7 @@ const MainApp: React.FC = () => {
 
         </section>
 
-        {/* Factory Contact & Support */}
+        {/* 7. Factory Contact & Direct Support */}
         <ContactSection />
 
       </main>
